@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Panduan Escrow Coinawe</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 1rem;
+      background: #f9f9f9;
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #1a73e8;
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+
+    h2 {
+      color: #444;
+    }
+
+    p,
+    li {
+      line-height: 1.6;
+    }
+
+    .highlight {
+      background: #e8f0fe;
+      padding: 0.5rem;
+      border-left: 4px solid #1a73e8;
+      margin: 1rem 0;
+      font-family: monospace;
+      overflow-x: auto;
+    }
+
+    .lang-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .lang-buttons button {
+      background: #1a73e8;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      flex: 1 0 auto;
+      min-width: 120px;
+    }
+
+    .lang-buttons button:hover {
+      background: #155ab6;
+    }
+
+    @media (max-width: 600px) {
+      .section {
+        padding: 1rem;
+      }
+
+      .lang-buttons button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Choose Your Language</h1>
+    <div class="lang-buttons">
+      <button onclick="setLang('id')">🇮🇩 Indonesia</button>
+      <button onclick="setLang('en')">🇬🇧 English</button>
+      <button onclick="setLang('ru')">🇷🇺 Русский</button>
+    </div>
+    <div id="content"></div>
+  </div>
+
+  <script>
+    const content = {
+      id: `
+        <div class='section'><h2>1. Memulai Proses Escrow</h2><ul><li>Ketik <strong>/start</strong> di bot.</li><li>Mulai proses dengan <strong>/escrow</strong> dan pilih peran.</li></ul></div>
+        <div class='section'><h2>2. Mengisi Detail Transaksi</h2><p>Masukkan detail: </p><div class='highlight'>@username_lawan jumlah_item nama_item</div><p>Contoh:</p><div class='highlight'>@johndoe 1 NFT Bintang 5</div><p>Lalu masukkan nominal & token: <strong>100 TON</strong> / <strong>1000 AWEWE</strong>.</p></div>
+        <div class='section'><h2>3. Konfirmasi dari Lawan Transaksi</h2><p>Lawan tekan <strong>✅ Setujui Escrow</strong>.</p></div>
+        <div class='section'><h2>4. Transfer Dana oleh Pembeli</h2><ul><li>Pilih token, dapatkan alamat wallet Coinawe.</li><li>Transfer dana sesuai nominal + fee 2% (dibagi 2).</li><li>Kirim <strong>Txhash</strong> / screenshot ke bot.</li></ul></div>
+        <div class='section'><h2>5. Konfirmasi & Rilis Dana</h2><ul><li>Penjual verifikasi item, tekan <strong>✅ Konfirmasi & Rilis</strong>.</li></ul></div>
+        <div class='section'><h2>6. Escrow Selesai</h2><ul><li>Dana otomatis dikirim ke penjual.</li><li>Kedua pihak dapat notifikasi selesai.</li></ul></div>
+        <div class='section'><h2>Penting</h2><ul><li><strong>Keamanan:</strong> Gunakan bot resmi.</li><li><strong>Pelanggaran:</strong> Diblokir sesuai S&K.</li></ul><p>Selamat bertransaksi di <strong>Coinawe</strong>! 💼</p></div>
+      `,
+      en: `
+        <div class='section'><h2>1. Start Escrow Process</h2><ul><li>Type <strong>/start</strong> in the bot.</li><li>Initiate with <strong>/escrow</strong> and choose your role.</li></ul></div>
+        <div class='section'><h2>2. Fill in Transaction Details</h2><p>Use the format:</p><div class='highlight'>@username amount item_name</div><p>Example:</p><div class='highlight'>@johndoe 1 NFT Star 5</div><p>Then enter amount & token: <strong>100 TON</strong> / <strong>1000 AWEWE</strong>.</p></div>
+        <div class='section'><h2>3. Confirmation by Opponent</h2><p>Opponent will click <strong>✅ Approve Escrow</strong>.</p></div>
+        <div class='section'><h2>4. Fund Transfer by Buyer</h2><ul><li>Select token, get Coinawe wallet address.</li><li>Transfer full amount + 2% fee (shared).</li><li>Send <strong>Txhash</strong> / screenshot to bot.</li></ul></div>
+        <div class='section'><h2>5. Confirm & Release</h2><ul><li>Seller verifies item, presses <strong>✅ Confirm & Release</strong>.</li></ul></div>
+        <div class='section'><h2>6. Escrow Complete</h2><ul><li>Funds auto-released to seller.</li><li>Both parties get notification.</li></ul></div>
+        <div class='section'><h2>Important</h2><ul><li><strong>Security:</strong> Always use the bot.</li><li><strong>Violation:</strong> Will be blocked as per T&C.</li></ul><p>Happy trading with <strong>Coinawe</strong>! 💼</p></div>
+      `,
+      ru: `
+        <div class='section'><h2>1. Начало Escrow</h2><ul><li>Введите <strong>/start</strong> в боте.</li><li>Начните через <strong>/escrow</strong> и выберите роль.</li></ul></div>
+        <div class='section'><h2>2. Детали сделки</h2><p>Используйте формат:</p><div class='highlight'>@username количество название</div><p>Пример:</p><div class='highlight'>@johndoe 1 NFT Звезда 5</div><p>Укажите сумму и токен: <strong>100 TON</strong> / <strong>1000 AWEWE</strong>.</p></div>
+        <div class='section'><h2>3. Подтверждение партнёра</h2><p>Партнёр нажимает <strong>✅ Принять Escrow</strong>.</p></div>
+        <div class='section'><h2>4. Перевод средств покупателем</h2><ul><li>Выберите токен, получите адрес кошелька Coinawe.</li><li>Переведите сумму + 2% комиссию (поровну).</li><li>Отправьте <strong>Txhash</strong> или скриншот.</li></ul></div>
+        <div class='section'><h2>5. Подтверждение и выпуск</h2><ul><li>Продавец проверяет товар, нажимает <strong>✅ Подтвердить и Выпустить</strong>.</li></ul></div>
+        <div class='section'><h2>6. Завершение Escrow</h2><ul><li>Средства автоматически переводятся продавцу.</li><li>Обе стороны получают уведомление.</li></ul></div>
+        <div class='section'><h2>Важно</h2><ul><li><strong>Безопасность:</strong> Используйте официальный бот.</li><li><strong>Нарушение:</strong> Блокировка согласно правилам.</li></ul><p>Удачных сделок с <strong>Coinawe</strong>! 💼</p></div>
+      `
+    };
+
+    function setLang(lang) {
+      document.getElementById("content").innerHTML = content[lang];
+    }
+
+    setLang('id');
+  </script>
+</body>
+
+</html>
