@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,18 +16,15 @@
       flex-direction: column;
       align-items: center;
     }
-
     h1 {
       color: #1a73e8;
       text-align: center;
       margin-bottom: 1rem;
     }
-
     .container {
       max-width: 800px;
       width: 100%;
     }
-
     .section {
       margin-bottom: 2rem;
       background: #fff;
@@ -36,16 +32,13 @@
       border-radius: 10px;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
     }
-
     h2 {
       color: #444;
     }
-
     p,
     li {
       line-height: 1.6;
     }
-
     .highlight {
       background: #e8f0fe;
       padding: 0.5rem;
@@ -54,7 +47,6 @@
       font-family: monospace;
       overflow-x: auto;
     }
-
     .lang-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -62,7 +54,6 @@
       gap: 1rem;
       margin-bottom: 2rem;
     }
-
     .lang-buttons button {
       background: #1a73e8;
       color: white;
@@ -74,16 +65,13 @@
       flex: 1 0 auto;
       min-width: 120px;
     }
-
     .lang-buttons button:hover {
       background: #155ab6;
     }
-
     @media (max-width: 600px) {
       .section {
         padding: 1rem;
       }
-
       .lang-buttons button {
         font-size: 0.9rem;
         padding: 0.5rem 1rem;
@@ -91,7 +79,6 @@
     }
   </style>
 </head>
-
 <body>
   <div style="text-align: center; margin-bottom: 2rem;">
     <img src="logo.png" alt="Coinawe Logo" style="max-width: 200px; height: auto; margin-bottom: 1rem;">
@@ -103,44 +90,247 @@
     </div>
     <div id="content"></div>
   </div>
-
   <script>
     const content = {
       id: `
-        <div class='section'><h2>1. Memulai Proses Escrow</h2><ul><li>Ketik <strong>/start</strong> di bot.</li><li>Mulai proses dengan <strong>/escrow</strong> dan pilih peran.</li></ul></div>
-        <div class='section'><h2>2. Mengisi Detail Transaksi</h2><p>Masukkan detail: </p><div class='highlight'>@username_lawan jumlah_item nama_item</div><p>Contoh:</p><div class='highlight'>@johndoe 1 NFT Bintang 5</div><p>Lalu masukkan nominal & token: <strong>100 TON</strong> / <strong>1000 AWEWE</strong>.</p></div>
-        <div class='section'><h2>3. Konfirmasi dari Lawan Transaksi</h2><p>Lawan tekan <strong>✅ Setujui Escrow</strong>.</p></div>
-        <div class='section'><h2>4. Transfer Dana oleh Pembeli</h2><ul><li>Pilih token, dapatkan alamat wallet Coinawe.</li><li>Transfer dana sesuai nominal + fee 2% (dibagi 2).</li><li>Kirim <strong>Txhash</strong> / screenshot ke bot.</li></ul></div>
-        <div class='section'><h2>5. Konfirmasi & Rilis Dana</h2><ul><li>Penjual verifikasi item, tekan <strong>✅ Konfirmasi & Rilis</strong>.</li></ul></div>
-        <div class='section'><h2>6. Escrow Selesai</h2><ul><li>Dana otomatis dikirim ke penjual.</li><li>Kedua pihak dapat notifikasi selesai.</li></ul></div>
-        <div class='section'><h2>Penting</h2><ul><li><strong>Keamanan:</strong> Gunakan bot resmi.</li><li><strong>Pelanggaran:</strong> Diblokir sesuai S&K.</li></ul><p>Selamat bertransaksi di <strong>Coinawe</strong>! 💼</p></div>
+        <div class='section'>
+          <h2>Panduan Lengkap Cara Kerja Escrow Coinawe</h2>
+          <p>Selamat datang di layanan escrow Coinawe! Panduan ini akan menjelaskan alur kerja transaksi yang aman dan transparan, mulai dari pembuatan hingga penyelesaian.</p>
+          <hr>
+          <h3>Bagian 1: Alur untuk Pembeli (Buyer)</h3>
+          <p>Sebagai pembeli, Anda adalah pihak yang memulai transaksi dan mengamankan dana hingga barang/jasa diterima.</p>
+          <h4>Langkah 1: Memulai Escrow</h4>
+          <ul>
+            <li>Pilih menu <strong>"➕ Buat Escrow"</strong> dan kemudian pilih peran <strong>"👤 Pembeli"</strong>.</li>
+            <li>Bot akan meminta Anda memasukkan detail escrow dengan format berikut:
+              <div class='highlight'>@username_lawan jumlah_item nama_item</div>
+            </li>
+            <li><strong>Contoh</strong>: <code>@relog 2 username non-NFT</code></li>
+            <li>Setelah detail barang disimpan, bot akan meminta Anda memasukkan nominal dan jenis token (contoh: <code>100 TON</code> atau <code>1000 AWEWE</code>).</li>
+          </ul>
+          <h4>Langkah 2: Menunggu Persetujuan Penjual</h4>
+          <ul>
+            <li>Bot akan mengirimkan permintaan escrow ke penjual.</li>
+            <li>Anda akan menerima notifikasi jika penjual telah menyetujui transaksi.</li>
+          </ul>
+          <h4>Langkah 3: Melakukan Pembayaran</h4>
+          <ul>
+            <li>Bot akan memberikan total jumlah dana yang harus Anda transfer, termasuk biaya escrow (1% untuk AWEWE, 5% untuk TON).</li>
+            <li>Transfer dana ke alamat wallet yang diberikan oleh bot.</li>
+            <li>Setelah transfer berhasil, tekan tombol <strong>"✅ Saya sudah transfer"</strong> dan kirimkan bukti transfer (berupa foto atau screenshot).</li>
+            <li>Bot akan menyimpan bukti transfer Anda, dan admin akan memverifikasi pembayaran.</li>
+          </ul>
+          <h4>Langkah 4: Menunggu & Mengonfirmasi Barang</h4>
+          <ul>
+            <li>Setelah pembayaran Anda diverifikasi, bot akan memberitahu Anda bahwa penjual sedang mempersiapkan barang.</li>
+            <li>Setelah Anda menerima barang/jasa dari penjual, tekan tombol <strong>"✅ Konfirmasi Barang Diterima"</strong> yang ada di chat bot.</li>
+            <li>Konfirmasi ini akan memberitahu admin untuk melepaskan dana ke penjual.</li>
+          </ul>
+          <h4>Langkah 5: Selesai</h4>
+          <ul>
+            <li>Anda akan menerima notifikasi bahwa escrow telah selesai.</li>
+          </ul>
+          <hr>
+          <h3>Bagian 2: Alur untuk Penjual (Seller)</h3>
+          <p>Sebagai penjual, Anda menerima permintaan escrow, mengirimkan barang/jasa, dan menerima dana setelah pembeli mengonfirmasi.</p>
+          <h4>Langkah 1: Menerima & Menyetujui Escrow</h4>
+          <ul>
+            <li>Anda akan menerima notifikasi dari bot bahwa ada permintaan escrow baru.</li>
+            <li>Tekan tombol <strong>"✅ Setujui Escrow"</strong> untuk menerima transaksi.</li>
+          </ul>
+          <h4>Langkah 2: Menunggu Pembayaran & Mengirim Barang</h4>
+          <ul>
+            <li>Setelah pembeli melakukan pembayaran dan admin memverifikasi, bot akan memberitahu Anda bahwa pembayaran sudah dikonfirmasi.</li>
+            <li>Kirimkan barang/jasa kepada pembeli.</li>
+          </ul>
+          <h4>Langkah 3: Memberikan Alamat Wallet</h4>
+          <ul>
+            <li>Setelah Anda mengirimkan barang, bot akan meminta Anda untuk mengirimkan alamat wallet Anda.</li>
+            <li>Kirimkan alamat wallet Anda di chat bot.</li>
+          </ul>
+          <h4>Langkah 4: Menerima Dana & Selesai</h4>
+          <ul>
+            <li>Bot akan memberitahu Anda bahwa dana akan segera dilepaskan setelah pembeli mengonfirmasi penerimaan barang.</li>
+            <li>Anda akan menerima notifikasi bahwa dana telah dilepaskan dan escrow selesai.</li>
+          </ul>
+          <hr>
+          <h3>Bagian 3: Proses Komplain (Dispute)</h3>
+          <p>Jika terjadi masalah dalam transaksi, Anda dapat mengajukan komplain.</p>
+          <ul>
+            <li>Tombol <strong>"⚠️ Komplain"</strong> akan tersedia setelah penjual memberikan alamat walletnya.</li>
+            <li>Tekan tombol tersebut untuk memulai proses komplain.</li>
+            <li>Bot akan secara otomatis mengirimkan notifikasi kepada admin. Admin akan meninjau dan membantu menyelesaikan masalah antara kedua pihak.</li>
+          </ul>
+          <hr>
+          <h3>Biaya Layanan Escrow</h3>
+          <ul>
+            <li><strong>AWEWE</strong>: Biaya layanan 1% dari total transaksi.</li>
+            <li><strong>TOKEN LAIN (seperti TON)</strong>: Biaya layanan 5% dari total transaksi.</li>
+            <li>Biaya akan dibebankan kepada pihak yang memulai escrow (dalam hal ini, <strong>pembeli</strong>).</li>
+          </ul>
+        </div>
       `,
       en: `
-        <div class='section'><h2>1. Start Escrow Process</h2><ul><li>Type <strong>/start</strong> in the bot.</li><li>Initiate with <strong>/escrow</strong> and choose your role.</li></ul></div>
-        <div class='section'><h2>2. Fill in Transaction Details</h2><p>Use the format:</p><div class='highlight'>@username amount item_name</div><p>Example:</p><div class='highlight'>@johndoe 1 NFT Star 5</div><p>Then enter amount & token: <strong>100 TON</strong> / <strong>1000 AWEWE</strong>.</p></div>
-        <div class='section'><h2>3. Confirmation by Opponent</h2><p>Opponent will click <strong>✅ Approve Escrow</strong>.</p></div>
-        <div class='section'><h2>4. Fund Transfer by Buyer</h2><ul><li>Select token, get Coinawe wallet address.</li><li>Transfer full amount + 2% fee (shared).</li><li>Send <strong>Txhash</strong> / screenshot to bot.</li></ul></div>
-        <div class='section'><h2>5. Confirm & Release</h2><ul><li>Seller verifies item, presses <strong>✅ Confirm & Release</strong>.</li></ul></div>
-        <div class='section'><h2>6. Escrow Complete</h2><ul><li>Funds auto-released to seller.</li><li>Both parties get notification.</li></ul></div>
-        <div class='section'><h2>Important</h2><ul><li><strong>Security:</strong> Always use the bot.</li><li><strong>Violation:</strong> Will be blocked as per T&C.</li></ul><p>Happy trading with <strong>Coinawe</strong>! 💼</p></div>
+        <div class='section'>
+          <h2>Complete Guide to Coinawe Escrow</h2>
+          <p>Welcome to the Coinawe escrow service! This guide will explain the workflow for secure and transparent transactions, from creation to completion.</p>
+          <hr>
+          <h3>Part 1: Flow for Buyers</h3>
+          <p>As a buyer, you are the party who initiates the transaction and secures the funds until the goods/services are received.</p>
+          <h4>Step 1: Starting an Escrow</h4>
+          <ul>
+            <li>Select the <strong>"➕ Create Escrow"</strong> menu and then choose the <strong>"👤 Buyer"</strong> role.</li>
+            <li>The bot will ask you to enter escrow details in the following format:
+              <div class='highlight'>@opponent_username item_count item_name</div>
+            </li>
+            <li><strong>Example</strong>: <code>@relog 2 non-NFT usernames</code></li>
+            <li>After the item details are saved, the bot will ask you to enter the agreed amount and token type (e.g., <code>100 TON</code> or <code>1000 AWEWE</code>).</li>
+          </ul>
+          <h4>Step 2: Waiting for Seller's Approval</h4>
+          <ul>
+            <li>After you submit the details, the bot will send an escrow request to the seller.</li>
+            <li>You will receive a notification when the seller has approved the transaction.</li>
+          </ul>
+          <h4>Step 3: Making the Payment</h4>
+          <ul>
+            <li>The bot will provide the total amount you need to transfer, including the escrow fee (1% for AWEWE, 5% for TON).</li>
+            <li>Transfer the funds to the wallet address provided by the bot.</li>
+            <li>After a successful transfer, press the <strong>"✅ I've transferred"</strong> button and send the transfer proof (a photo or screenshot).</li>
+            <li>The bot will save your transfer proof, and the admin will verify the payment.</li>
+          </ul>
+          <h4>Step 4: Waiting & Confirming the Item</h4>
+          <ul>
+            <li>Once your payment is verified, the bot will notify you that the seller is preparing the goods.</li>
+            <li>After you receive the goods/services from the seller, press the <strong>"✅ Confirm Goods Received"</strong> button in the bot chat.</li>
+            <li>This confirmation will inform the admin to release the funds to the seller.</li>
+          </ul>
+          <h4>Step 5: Completion</h4>
+          <ul>
+            <li>You will receive a notification that the escrow is complete.</li>
+          </ul>
+          <hr>
+          <h3>Part 2: Flow for Sellers</h3>
+          <p>As a seller, you receive the escrow request, send the goods/services, and receive funds after the buyer confirms.</p>
+          <h4>Step 1: Receiving & Approving Escrow</h4>
+          <ul>
+            <li>You will receive a notification from the bot that there is a new escrow request.</li>
+            <li>Press the <strong>"✅ Accept Escrow"</strong> button to approve the transaction.</li>
+          </ul>
+          <h4>Step 2: Waiting for Payment & Sending Goods</h4>
+          <ul>
+            <li>After the buyer makes the payment and the admin verifies it, the bot will inform you that the payment has been confirmed.</li>
+            <li>Send the goods/services to the buyer.</li>
+          </ul>
+          <h4>Step 3: Providing Your Wallet Address</h4>
+          <ul>
+            <li>After you send the goods, the bot will ask you to provide your wallet address.</li>
+            <li>Send your wallet address in the bot chat.</li>
+          </ul>
+          <h4>Step 4: Receiving Funds & Completion</h4>
+          <ul>
+            <li>The bot will notify you that the funds will be released as soon as the buyer confirms receipt of the goods.</li>
+            <li>You will receive a notification that the funds have been released and the escrow is complete.</li>
+          </ul>
+          <hr>
+          <h3>Part 3: Dispute Process</h3>
+          <p>If an issue arises during the transaction, you can file a complaint.</p>
+          <ul>
+            <li>The <strong>"⚠️ Komplain"</strong> button will be available after the seller provides their wallet address.</li>
+            <li>Press the button to initiate the dispute process.</li>
+            <li>The bot will automatically notify the admin. The admin will review and help resolve the issue between both parties.</li>
+          </ul>
+          <hr>
+          <h3>Escrow Service Fees</h3>
+          <ul>
+            <li><strong>AWEWE</strong>: A 1% service fee on the total transaction amount.</li>
+            <li><strong>OTHER TOKENS (e.g., TON)</strong>: A 5% service fee on the total transaction amount.</li>
+            <li>The fee is charged to the party who initiates the escrow (in this case, the <strong>buyer</strong>).</li>
+          </ul>
+        </div>
       `,
       ru: `
-        <div class='section'><h2>1. Начало Escrow</h2><ul><li>Введите <strong>/start</strong> в боте.</li><li>Начните через <strong>/escrow</strong> и выберите роль.</li></ul></div>
-        <div class='section'><h2>2. Детали сделки</h2><p>Используйте формат:</p><div class='highlight'>@username количество название</div><p>Пример:</p><div class='highlight'>@johndoe 1 NFT Звезда 5</div><p>Укажите сумму и токен: <strong>100 TON</strong> / <strong>1000 AWEWE</strong>.</p></div>
-        <div class='section'><h2>3. Подтверждение партнёра</h2><p>Партнёр нажимает <strong>✅ Принять Escrow</strong>.</p></div>
-        <div class='section'><h2>4. Перевод средств покупателем</h2><ul><li>Выберите токен, получите адрес кошелька Coinawe.</li><li>Переведите сумму + 2% комиссию (поровну).</li><li>Отправьте <strong>Txhash</strong> или скриншот.</li></ul></div>
-        <div class='section'><h2>5. Подтверждение и выпуск</h2><ul><li>Продавец проверяет товар, нажимает <strong>✅ Подтвердить и Выпустить</strong>.</li></ul></div>
-        <div class='section'><h2>6. Завершение Escrow</h2><ul><li>Средства автоматически переводятся продавцу.</li><li>Обе стороны получают уведомление.</li></ul></div>
-        <div class='section'><h2>Важно</h2><ul><li><strong>Безопасность:</strong> Используйте официальный бот.</li><li><strong>Нарушение:</strong> Блокировка согласно правилам.</li></ul><p>Удачных сделок с <strong>Coinawe</strong>! 💼</p></div>
+        <div class='section'>
+          <h2>Полное руководство по использованию Escrow Coinawe</h2>
+          <p>Добро пожаловать в сервис Escrow Coinawe! Это руководство объяснит безопасный и прозрачный рабочий процесс транзакций, от создания до завершения.</p>
+          <hr>
+          <h3>Часть 1: Схема для Покупателя (Buyer)</h3>
+          <p>Как покупатель, вы являетесь стороной, которая инициирует сделку и сохраняет средства, пока товар/услуга не будет получена.</p>
+          <h4>Шаг 1: Создание Escrow</h4>
+          <ul>
+            <li>Выберите меню <strong>"➕ Создать Escrow"</strong>, затем выберите роль <strong>"👤 Покупатель"</strong>.</li>
+            <li>Бот попросит вас ввести детали сделки в следующем формате:
+              <div class='highlight'>@username_оппонента количество_предметов название_предмета</div>
+            </li>
+            <li><strong>Пример</strong>: <code>@relog 2 не-NFT имени пользователя</code></li>
+            <li>После сохранения деталей товара бот попросит вас ввести согласованную сумму и тип токена (например, <code>100 TON</code> или <code>1000 AWEWE</code>).</li>
+          </ul>
+          <h4>Шаг 2: Ожидание подтверждения Продавца</h4>
+          <ul>
+            <li>После того, как вы отправите детали, бот отправит запрос на escrow продавцу.</li>
+            <li>Вы получите уведомление, если продавец подтвердит сделку.</li>
+          </ul>
+          <h4>Шаг 3: Осуществление платежа</h4>
+          <ul>
+            <li>Бот предоставит общую сумму, которую вы должны перевести, включая комиссию за escrow (1% для AWEWE, 5% для TON).</li>
+            <li>Переведите средства на адрес кошелька, предоставленный ботом.</li>
+            <li>После успешного перевода нажмите кнопку <strong>"✅ Я перевел"</strong> и отправьте подтверждение перевода (фото или скриншот).</li>
+            <li>Бот сохранит ваше подтверждение перевода, и администратор проверит платеж.</li>
+          </ul>
+          <h4>Шаг 4: Ожидание и подтверждение получения товара</h4>
+          <ul>
+            <li>После проверки вашего платежа бот уведомит вас, что продавец готовит товар.</li>
+            <li>После получения товара/услуги от продавца нажмите кнопку <strong>"✅ Подтвердить получение товара"</strong> в чате бота.</li>
+            <li>Это подтверждение уведомит администратора о необходимости выпустить средства продавцу.</li>
+          </ul>
+          <h4>Шаг 5: Завершение</h4>
+          <ul>
+            <li>Вы получите уведомление, что escrow завершен.</li>
+          </ul>
+          <hr>
+          <h3>Часть 2: Схема для Продавца (Seller)</h3>
+          <p>Как продавец, вы получаете запрос на escrow, отправляете товар/услугу и получаете средства после подтверждения покупателем.</p>
+          <h4>Шаг 1: Получение и подтверждение Escrow</h4>
+          <ul>
+            <li>Вы получите уведомление от бота о новом запросе на escrow.</li>
+            <li>Нажмите кнопку <strong>"✅ Принять Escrow"</strong>, чтобы принять сделку.</li>
+          </ul>
+          <h4>Шаг 2: Ожидание оплаты и отправка товара</h4>
+          <ul>
+            <li>После того, как покупатель произведет оплату и администратор ее проверит, бот сообщит вам, что платеж подтвержден.</li>
+            <li>Отправьте товар/услугу покупателю.</li>
+          </ul>
+          <h4>Шаг 3: Предоставление адреса кошелька</h4>
+          <ul>
+            <li>После отправки товара бот попросит вас предоставить адрес вашего кошелька.</li>
+            <li>Отправьте адрес вашего кошелька в чат бота.</li>
+          </ul>
+          <h4>Шаг 4: Получение средств и завершение</h4>
+          <ul>
+            <li>Бот уведомит вас, что средства будут выпущены, как только покупатель подтвердит получение товара.</li>
+            <li>Вы получите уведомление, что средства были выпущены и escrow завершен.</li>
+          </ul>
+          <hr>
+          <h3>Часть 3: Процесс рассмотрения споров (Dispute)</h3>
+          <p>Если во время сделки возникнут проблемы, вы можете подать жалобу.</p>
+          <ul>
+            <li>Кнопка <strong>"⚠️ Komplain"</strong> будет доступна после того, как продавец предоставит адрес своего кошелька.</li>
+            <li>Нажмите эту кнопку, чтобы начать процесс рассмотрения спора.</li>
+            <li>Бот автоматически уведомит администратора. Администратор рассмотрит и поможет разрешить проблему между обеими сторонами.</li>
+          </ul>
+          <hr>
+          <h3>Комиссия за услуги Escrow</h3>
+          <ul>
+            <li><strong>AWEWE</strong>: Комиссия за услуги составляет 1% от общей суммы сделки.</li>
+            <li><strong>ДРУГИЕ ТОКЕНЫ (например, TON)</strong>: Комиссия за услуги составляет 5% от общей суммы сделки.</li>
+            <li>Комиссия взимается со стороны, которая инициирует escrow (в данном случае, с <strong>покупателя</strong>).</li>
+          </ul>
+        </div>
       `
     };
-
     function setLang(lang) {
       document.getElementById("content").innerHTML = content[lang];
     }
-
     setLang('id');
   </script>
 </body>
-
 </html>
