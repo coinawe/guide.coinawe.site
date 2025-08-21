@@ -4,10 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Panduan Escrow Coinawe</title>
-  <link rel="icon" href="https://coinawe.site/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://coinawe.site/favicon.ico" type="image/x-
+
+icon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?
+
+family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <style>
     /* Global Styles & Variables */
     :root {
@@ -19,6 +23,7 @@
       --accent-gold: #ffc107;
       --border-color: rgba(0, 191, 255, 0.3);
       --highlight-bg: rgba(0, 191, 255, 0.1);
+      --accordion-hover-bg: rgba(0, 191, 255, 0.05);
     }
     
     * {
@@ -48,8 +53,12 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 10% 20%, var(--accent-blue) 0%, rgba(13, 15, 24, 0) 30%),
-                  radial-gradient(circle at 90% 80%, var(--accent-gold) 0%, rgba(13, 15, 24, 0) 30%);
+      background: radial-gradient(circle at 10% 20%, var(--accent-blue) 0%, 
+
+rgba(13, 15, 24, 0) 30%),
+                  radial-gradient(circle at 90% 80%, var(--accent-gold) 0%, 
+
+rgba(13, 15, 24, 0) 30%);
       opacity: 0.1;
       animation: neon-pulse 20s infinite alternate ease-in-out;
     }
@@ -121,7 +130,9 @@
     .lang-buttons button.active {
       background: var(--accent-blue);
       color: #000;
-      box-shadow: 0 0 20px var(--accent-blue), 0 0 10px var(--accent-blue) inset;
+      box-shadow: 0 0 20px var(--accent-blue), 0 0 10px var(--accent-blue) 
+
+inset;
       transform: scale(1.05);
     }
     
@@ -150,18 +161,12 @@
       margin-bottom: 1.5rem;
     }
     
-    .section h3 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: var(--heading-color);
-      margin-top: 2rem;
-    }
-
     .section h4 {
       font-size: 1.2rem;
       font-weight: 600;
       color: var(--accent-blue);
       margin-top: 1.5rem;
+      margin-bottom: 1rem;
     }
     
     p, li {
@@ -171,6 +176,7 @@
 
     ul {
       padding-left: 20px;
+      margin-bottom: 0;
     }
 
     li strong {
@@ -194,6 +200,63 @@
       border-top: 1px dashed var(--border-color);
       margin: 2rem 0;
     }
+
+    /* ACCORDION STYLES */
+    .accordion-container {
+        border-top: 1px solid var(--border-color);
+    }
+    .accordion-item {
+        border-bottom: 1px solid var(--border-color);
+    }
+    .accordion-button {
+        background-color: transparent;
+        color: var(--heading-color);
+        cursor: pointer;
+        padding: 1.2rem 1rem;
+        width: 100%;
+        text-align: left;
+        border: none;
+        outline: none;
+        font-size: 1.1rem;
+        font-weight: 600;
+        font-family: 'Inter', sans-serif;
+        transition: background-color 0.2s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .accordion-button.main-section-button {
+        font-size: 1.4rem;
+        padding: 1.5rem 1rem;
+    }
+    .accordion-button:hover {
+        background-color: var(--accordion-hover-bg);
+    }
+    .accordion-button::after {
+        content: '+';
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: var(--accent-blue);
+        transition: transform 0.3s ease;
+    }
+    .accordion-button.active::after {
+        content: '−';
+        transform: rotate(180deg);
+    }
+    .accordion-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: var(--accordion-hover-bg);
+    }
+    .accordion-content-inner {
+        padding: 0 1.5rem 1.5rem 1.5rem;
+        border-top: 1px solid var(--border-color);
+    }
+    .accordion-content-inner p:first-child {
+        margin-top: 1.5rem;
+    }
+
 
     .footer {
       text-align: center;
@@ -219,7 +282,7 @@
       .header p { font-size: 0.9rem; }
       .section { padding: 1.5rem; }
       .section h2 { font-size: 1.5rem; }
-      .section h3 { font-size: 1.2rem; }
+      .accordion-button.main-section-button { font-size: 1.2rem; }
       .section h4 { font-size: 1rem; }
       .lang-buttons button {
         font-size: 0.8rem;
@@ -231,9 +294,17 @@
 <body>
   <div class="container">
     <div class="header">
-      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 17L7 14.5L7 9.5L12 12L12 17ZM12 12L17 9.5L17 14.5L12 17L12 12Z" stroke="var(--accent-blue)" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M12 12L7 9.5L12 7L17 9.5L12 12Z" stroke="var(--accent-blue)" stroke-width="2" stroke-linejoin="round"/>
+      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" 
+
+xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 17L7 14.5L7 9.5L12 12L12 
+
+17ZM12 12L17 9.5L17 14.5L12 17L12 12Z" stroke="var(--accent-blue)" stroke-
+
+width="2" stroke-linejoin="round"/>
+        <path d="M12 12L7 9.5L12 7L17 9.5L12 12Z" stroke="var(--accent-blue)" 
+
+stroke-width="2" stroke-linejoin="round"/>
       </svg>
       <h1>Panduan Escrow Coinawe</h1>
       <p>Panduan lengkap untuk transaksi aman dan transparan.</p>
@@ -256,250 +327,845 @@
     const content = {
       id: `
         <div class='section'>
-          <h2>Panduan Lengkap Cara Kerja Escrow Coinawe</h2>
-          <p>Selamat datang di layanan escrow Coinawe! Panduan ini akan menjelaskan alur kerja transaksi yang aman dan transparan, mulai dari pembuatan hingga penyelesaian.</p>
+          <h2>Panduan Lengkap Escrow Coinawe</h2>
+          <p>Selamat datang di layanan escrow Coinawe! Panduan ini akan 
+
+menjelaskan alur kerja transaksi yang aman dan transparan, mulai dari 
+
+pembuatan hingga penyelesaian.</p>
           <hr>
-          <h3><span style="color: var(--accent-gold);">🛒</span> Bagian 1: Alur untuk Pembeli (Buyer)</h3>
-          <p>Sebagai pembeli, Anda adalah pihak yang memulai transaksi dan mengamankan dana hingga barang/jasa diterima.</p>
-          <h4>Langkah 1: Memulai Escrow</h4>
-          <ul>
-            <li>Pilih menu <strong>"➕ Buat Escrow"</strong> dan kemudian pilih peran <strong>"👤 Pembeli"</strong>.</li>
-            <li>Bot akan meminta Anda memasukkan detail escrow dengan format berikut:
-              <div class='highlight'>@username_lawan jumlah_item nama_item</div>
-            </li>
-            <li><strong>Contoh</strong>: <code>@relog 2 username non-NFT</code></li>
-            <li>Setelah detail barang disimpan, bot akan meminta Anda memasukkan nominal dan jenis token (contohnya akan ditampilkan di bawah ini).
-              <div class='highlight'>100 TON</div>
-              <div class='highlight'>1000 AWEWE</div>
-            </li>
-          </ul>
-          <h4>Langkah 2: Menunggu Persetujuan Penjual</h4>
-          <ul>
-            <li>Bot akan mengirimkan permintaan escrow ke penjual.</li>
-            <li>Anda akan menerima notifikasi jika penjual telah menyetujui transaksi.</li>
-          </ul>
-          <h4>Langkah 3: Melakukan Pembayaran</h4>
-          <ul>
-            <li>Bot akan memberikan total jumlah dana yang harus Anda transfer, termasuk biaya escrow (1% untuk AWEWE, 5% untuk TON).</li>
-            <li>Transfer dana ke alamat wallet yang diberikan oleh bot.</li>
-            <li>Setelah transfer berhasil, tekan tombol <strong>"✅ Saya sudah transfer"</strong> dan kirimkan bukti transfer (berupa foto atau screenshot).</li>
-            <li>Bot akan menyimpan bukti transfer Anda, dan admin akan memverifikasi pembayaran.</li>
-          </ul>
-          <h4>Langkah 4: Menunggu & Mengonfirmasi Barang</h4>
-          <ul>
-            <li>Setelah pembayaran Anda diverifikasi, bot akan memberitahu Anda bahwa penjual sedang mempersiapkan barang.</li>
-            <li>Setelah Anda menerima barang/jasa dari penjual, tekan tombol <strong>"✅ Konfirmasi Barang Diterima"</strong> yang ada di chat bot.</li>
-            <li>Konfirmasi ini akan memberitahu admin untuk melepaskan dana ke penjual.</li>
-          </ul>
-          <h4>Langkah 5: Selesai</h4>
-          <ul>
-            <li>Anda akan menerima notifikasi bahwa escrow telah selesai.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">📦</span> Bagian 2: Alur untuk Penjual (Seller)</h3>
-          <p>Sebagai penjual, Anda menerima permintaan escrow, mengirimkan barang/jasa, dan menerima dana setelah pembeli mengonfirmasi.</p>
-          <h4>Langkah 1: Menerima & Menyetujui Escrow</h4>
-          <ul>
-            <li>Anda akan menerima notifikasi dari bot bahwa ada permintaan escrow baru.</li>
-            <li>Tekan tombol <strong>"✅ Setujui Escrow"</strong> untuk menerima transaksi.</li>
-          </ul>
-          <h4>Langkah 2: Menunggu Pembayaran & Mengirim Barang</h4>
-          <ul>
-            <li>Setelah pembeli melakukan pembayaran dan admin memverifikasi, bot akan memberitahu Anda bahwa pembayaran sudah dikonfirmasi.</li>
-            <li>Kirimkan barang/jasa kepada pembeli.</li>
-          </ul>
-          <h4>Langkah 3: Memberikan Alamat Wallet</h4>
-          <ul>
-            <li>Setelah Anda mengirimkan barang, bot akan meminta Anda untuk mengirimkan alamat wallet Anda.</li>
-            <li>Kirimkan alamat wallet Anda di chat bot.</li>
-          </ul>
-          <h4>Langkah 4: Menerima Dana & Selesai</h4>
-          <ul>
-            <li>Bot akan memberitahu Anda bahwa dana akan segera dilepaskan setelah pembeli mengonfirmasi penerimaan barang.</li>
-            <li>Anda akan menerima notifikasi bahwa dana telah dilepaskan dan escrow selesai.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">⚖️</span> Bagian 3: Proses Komplain (Dispute)</h3>
-          <p>Jika terjadi masalah dalam transaksi, Anda dapat mengajukan komplain.</p>
-          <ul>
-            <li>Tombol <strong>"⚠️ Komplain"</strong> akan tersedia setelah penjual memberikan alamat walletnya.</li>
-            <li>Tekan tombol tersebut untuk memulai proses komplain.</li>
-            <li>Bot akan secara otomatis mengirimkan notifikasi kepada admin. Admin akan meninjau dan membantu menyelesaikan masalah antara kedua pihak.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">💰</span> Biaya Layanan Escrow</h3>
-          <ul>
-            <li><strong>AWEWE</strong>: Biaya layanan 1% dari total transaksi.</li>
-            <li><strong>TOKEN LAIN (seperti TON)</strong>: Biaya layanan 5% dari total transaksi.</li>
-            <li>Biaya akan dibebankan kepada pihak yang memulai escrow (dalam hal ini, <strong>pembeli</strong>).</li>
-          </ul>
+          <div class="accordion-container">
+              <div class="accordion-item">
+                  <button class="accordion-button"><span style="color: var(--
+
+accent-gold);">🌟</span> Keunggulan Utama Coinawe Bot</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>Coinawe dirancang untuk memberikan pengalaman 
+
+transaksi yang aman, efisien, dan terpercaya. Klik setiap poin di bawah untuk 
+
+melihat detailnya:</p>
+                          <div class="accordion-container">
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Keamanan 
+
+Maksimal</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Dana Anda diamankan oleh bot 
+
+sebagai pihak ketiga yang netral. Penjual tidak akan menerima pembayaran 
+
+sebelum Anda mengonfirmasi penerimaan barang/jasa. Ini mencegah penipuan di 
+
+mana penjual kabur setelah menerima uang. Sebaliknya, pembeli tidak bisa 
+
+membatalkan pembayaran setelah barang dikirim, melindungi penjual dari pembeli 
+
+fiktif.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Proses 
+
+Otomatis & Cepat</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Bot akan memandu Anda dan lawan 
+
+transaksi Anda di setiap langkah. Tidak perlu lagi bertanya "langkah 
+
+selanjutnya apa?". Notifikasi otomatis dikirim saat ada tindakan yang 
+
+diperlukan, memastikan proses berjalan lancar dan cepat tanpa penundaan yang 
+
+tidak perlu.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Dukungan 
+
+Admin Profesional</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Jika terjadi sengketa, Anda dapat 
+
+menggunakan fitur Komplain untuk memanggil admin. Tim admin kami akan meninjau 
+
+bukti dari kedua belah pihak dan membuat keputusan yang adil. Struktur Super 
+
+Admin juga memastikan adanya eskalasi untuk kasus yang sangat rumit, menjamin 
+
+keadilan.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Struktur 
+
+Biaya Transparan</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Semua biaya layanan dihitung dan 
+
+ditampilkan secara transparan sebelum Anda melakukan pembayaran. Tidak ada 
+
+biaya tersembunyi atau biaya tambahan di akhir. Anda tahu persis jumlah yang 
+
+harus dibayar sejak awal, memungkinkan perencanaan anggaran yang lebih 
+
+baik.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Dukungan 
+
+Multibahasa</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Bot kami dirancang untuk 
+
+komunitas global. Dengan dukungan berbagai bahasa, Anda dapat bertransaksi 
+
+dengan aman dengan pengguna dari negara lain. Hambatan bahasa diminimalkan 
+
+karena setiap pihak menerima instruksi dalam bahasa yang mereka pahami, 
+
+mengurangi risiko kesalahpahaman.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="accordion-container">
+              <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">🛒</span>Alur untuk 
+
+Pembeli (Buyer)</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>Sebagai pembeli, Anda adalah pihak yang memulai 
+
+transaksi dan mengamankan dana hingga barang/jasa diterima.</p>
+                          <h4>Langkah 1: Memulai Escrow</h4>
+                          <ul>
+                            <li>Pilih menu <strong>"➕ Buat Escrow"</strong> dan 
+
+kemudian pilih peran <strong>"👤 Pembeli"</strong>.</li>
+                            <li>Bot akan meminta Anda memasukkan detail escrow 
+
+dengan format berikut: <div class='highlight'>@username_lawan jumlah_item 
+
+nama_item</div></li>
+                            <li><strong>Contoh</strong>: <code>@relog 2 
+
+username non-NFT</code></li>
+                            <li>Setelah detail barang disimpan, bot akan 
+
+meminta Anda memasukkan nominal dan jenis token: <div class='highlight'>100 
+
+TON</div></li>
+                          </ul>
+                          <h4>Langkah 2: Menunggu Persetujuan Penjual</h4>
+                          <ul>
+                            <li>Bot akan mengirimkan permintaan escrow ke 
+
+penjual. Anda akan menerima notifikasi jika penjual menyetujui.</li>
+                          </ul>
+                          <h4>Langkah 3: Melakukan Pembayaran</h4>
+                          <ul>
+                            <li>Bot akan memberikan total dana (termasuk 
+
+biaya) untuk ditransfer.</li>
+                            <li>Setelah transfer, tekan tombol <strong>"✅ Saya 
+
+sudah transfer"</strong> dan kirimkan bukti transfer. Admin akan 
+
+memverifikasi.</li>
+                          </ul>
+                          <h4>Langkah 4: Menunggu & Mengonfirmasi Barang</h4>
+                          <ul>
+                            <li>Setelah pembayaran diverifikasi, tunggu 
+
+penjual mengirim barang.</li>
+                            <li>Setelah Anda menerima barang/jasa, tekan 
+
+tombol <strong>"✅ Konfirmasi Barang Diterima"</strong>.</li>
+                          </ul>
+                          <h4>Langkah 5: Selesai</h4>
+                          <ul>
+                            <li>Anda akan menerima notifikasi bahwa escrow 
+
+telah selesai.</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">📦</span>Alur untuk 
+
+Penjual (Seller)</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                           <p>Sebagai penjual, Anda menerima permintaan 
+
+escrow, mengirimkan barang/jasa, dan menerima dana setelah pembeli 
+
+mengonfirmasi.</p>
+                          <h4>Langkah 1: Menerima & Menyetujui Escrow</h4>
+                          <ul>
+                            <li>Anda akan menerima notifikasi permintaan 
+
+escrow. Tekan tombol <strong>"✅ Setujui Escrow"</strong>.</li>
+                          </ul>
+                          <h4>Langkah 2: Menunggu Pembayaran & Mengirim 
+
+Barang</h4>
+                          <ul>
+                            <li>Setelah pembayaran diverifikasi admin, bot 
+
+akan memberitahu Anda. Segera kirimkan barang/jasa kepada pembeli.</li>
+                          </ul>
+                          <h4>Langkah 3: Memberikan Alamat Wallet</h4>
+                          <ul>
+                            <li>Setelah mengirim barang, bot akan meminta 
+
+alamat wallet Anda untuk menerima pembayaran.</li>
+                          </ul>
+                          <h4>Langkah 4: Menerima Dana & Selesai</h4>
+                          <ul>
+                            <li>Setelah pembeli mengonfirmasi, dana akan 
+
+dilepaskan ke wallet Anda dan escrow selesai.</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+               <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">⚖️</span>Proses Komplain 
+
+(Dispute)</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>Jika terjadi masalah dalam transaksi, Anda dapat 
+
+mengajukan komplain. Tombol <strong>"⚠️ Komplain"</strong> akan tersedia di 
+
+tahap tertentu. Admin akan meninjau dan membantu menyelesaikan masalah antara 
+
+kedua pihak secara adil.</p>
+                      </div>
+                  </div>
+              </div>
+               <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">💰</span>Biaya Layanan 
+
+Escrow</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                           <ul>
+                            <li><strong>AWEWE</strong>: Biaya layanan 1% dari 
+
+total transaksi.</li>
+                            <li><strong>TOKEN LAIN (seperti TON)</strong>: 
+
+Biaya layanan 5% dari total transaksi.</li>
+                            <li>Biaya akan dibebankan kepada pihak yang 
+
+memulai escrow (dalam hal ini, <strong>pembeli</strong>).</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
       `,
       en: `
         <div class='section'>
           <h2>Complete Guide to Coinawe Escrow</h2>
-          <p>Welcome to the Coinawe escrow service! This guide will explain the workflow for secure and transparent transactions, from creation to completion.</p>
+          <p>Welcome to the Coinawe escrow service! This guide will explain 
+
+the workflow for secure and transparent transactions, from creation to 
+
+completion.</p>
           <hr>
-          <h3><span style="color: var(--accent-gold);">🛒</span> Part 1: Flow for Buyers</h3>
-          <p>As a buyer, you are the party who initiates the transaction and secures the funds until the goods/services are received.</p>
-          <h4>Step 1: Starting an Escrow</h4>
-          <ul>
-            <li>Select the <strong>"➕ Create Escrow"</strong> menu and then choose the <strong>"👤 Buyer"</strong> role.</li>
-            <li>The bot will ask you to enter escrow details in the following format:
-              <div class='highlight'>@opponent_username item_count item_name</div>
-            </li>
-            <li><strong>Example</strong>: <code>@relog 2 non-NFT usernames</code></li>
-            <li>After the item details are saved, the bot will ask you to enter the agreed amount and token type (examples will be shown below).
-              <div class='highlight'>100 TON</div>
-              <div class='highlight'>1000 AWEWE</div>
-            </li>
-          </ul>
-          <h4>Step 2: Waiting for Seller's Approval</h4>
-          <ul>
-            <li>After you submit the details, the bot will send an escrow request to the seller.</li>
-            <li>You will receive a notification when the seller has approved the transaction.</li>
-          </ul>
-          <h4>Step 3: Making the Payment</h4>
-          <ul>
-            <li>The bot will provide the total amount you need to transfer, including the escrow fee (1% for AWEWE, 5% for TON).</li>
-            <li>Transfer the funds to the wallet address provided by the bot.</li>
-            <li>After a successful transfer, press the <strong>"✅ I've transferred"</strong> button and send the transfer proof (a photo or screenshot).</li>
-            <li>The bot will save your transfer proof, and the admin will verify the payment.</li>
-          </ul>
-          <h4>Langkah 4: Waiting & Confirming the Item</h4>
-          <ul>
-            <li>Once your payment is verified, the bot will notify you that the seller is preparing the goods.</li>
-            <li>After you receive the goods/services from the seller, press the <strong>"✅ Confirm Goods Received"</strong> button in the bot chat.</li>
-            <li>This confirmation will inform the admin to release the funds to the seller.</li>
-          </ul>
-          <h4>Step 5: Completion</h4>
-          <ul>
-            <li>You will receive a notification that the escrow is complete.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">📦</span> Part 2: Flow for Sellers</h3>
-          <p>As a seller, you receive the escrow request, send the goods/services, and receive funds after the buyer confirms.</p>
-          <h4>Step 1: Receiving & Approving Escrow</h4>
-          <ul>
-            <li>You will receive a notification from the bot that there is a new escrow request.</li>
-            <li>Press the <strong>"✅ Accept Escrow"</strong> button to approve the transaction.</li>
-          </ul>
-          <h4>Step 2: Waiting for Payment & Sending Goods</h4>
-          <ul>
-            <li>After the buyer makes the payment and the admin verifies it, the bot will inform you that the payment has been confirmed.</li>
-            <li>Send the goods/services to the buyer.</li>
-          </ul>
-          <h4>Step 3: Providing Your Wallet Address</h4>
-          <ul>
-            <li>After you send the goods, the bot will ask you to provide your wallet address.</li>
-            <li>Send your wallet address in the bot chat.</li>
-          </ul>
-          <h4>Step 4: Receiving Funds & Completion</h4>
-          <ul>
-            <li>The bot will notify you that the funds will be released as soon as the buyer confirms receipt of the goods.</li>
-            <li>You will receive a notification that the funds have been released and the escrow is complete.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">⚖️</span> Part 3: Dispute Process</h3>
-          <p>If an issue arises during the transaction, you can file a complaint.</p>
-          <ul>
-            <li>The <strong>"⚠️ Komplain"</strong> button will be available after the seller provides their wallet address.</li>
-            <li>Press the button to initiate the dispute process.</li>
-            <li>The bot will automatically notify the admin. The admin will review and help resolve the issue between both parties.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">💰</span> Escrow Service Fees</h3>
-          <ul>
-            <li><strong>AWEWE</strong>: A 1% service fee on the total transaction amount.</li>
-            <li><strong>OTHER TOKENS (e.g., TON)</strong>: A 5% service fee on the total transaction amount.</li>
-            <li>The fee is charged to the party who initiates the escrow (in this case, the <strong>buyer</strong>).</li>
-          </ul>
+          <div class="accordion-container">
+              <div class="accordion-item">
+                  <button class="accordion-button"><span style="color: var(--
+
+accent-gold);">🌟</span> Key Advantages of Coinawe Bot</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>Coinawe is designed to provide a secure, 
+
+efficient, and trustworthy transaction experience. Click each point below for 
+
+details:</p>
+                           <div class="accordion-container">
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Maximum 
+
+Security</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Your funds are secured by the bot 
+
+as a neutral third party. The seller will not receive payment until you 
+
+confirm receipt of the goods/services. This prevents fraud where a seller runs 
+
+away with the money. Conversely, the buyer cannot cancel the payment after the 
+
+goods have been sent, protecting the seller from fictitious buyers.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Automated & 
+
+Fast Process</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>The bot will guide you and your 
+
+counterparty through every step. No more asking "what's the next step?". 
+
+Automated notifications are sent when action is required, ensuring the process 
+
+flows smoothly and quickly without unnecessary delays.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-
+
+button">Professional Admin Support</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>If a dispute arises, you can use 
+
+the Complaint feature to summon an admin. Our admin team will review evidence 
+
+from both parties and make a fair decision. The Super Admin structure also 
+
+ensures escalation for very complex cases, guaranteeing fairness.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Transparent 
+
+Fee Structure</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>All service fees are calculated 
+
+and displayed transparently before you make a payment. There are no hidden 
+
+fees or extra charges at the end. You know the exact amount to pay from the 
+
+start, allowing for better budget planning.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-
+
+button">Multilingual Support</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Our bot is designed for a global 
+
+community. With support for multiple languages, you can trade securely with 
+
+users from other countries. The language barrier is minimized as each party 
+
+receives instructions in a language they understand, reducing the risk of 
+
+misunderstandings.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="accordion-container">
+              <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">🛒</span>Flow for 
+
+Buyers</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>As a buyer, you initiate the transaction and 
+
+secure funds until the goods/services are received.</p>
+                          <h4>Step 1: Starting Escrow</h4>
+                          <ul>
+                            <li>Select <strong>"➕ Create Escrow"</strong> then 
+
+<strong>"👤 Buyer"</strong>.</li>
+                            <li>Enter details in the format: <div 
+
+class='highlight'>@opponent_username item_count item_name</div></li>
+                            <li><strong>Example</strong>: <code>@relog 2 non-
+
+NFT usernames</code></li>
+                            <li>Enter the amount and token type: <div 
+
+class='highlight'>100 TON</div></li>
+                          </ul>
+                          <h4>Step 2: Waiting for Seller's Approval</h4>
+                          <ul>
+                            <li>The bot will send a request to the seller. 
+
+You'll be notified upon approval.</li>
+                          </ul>
+                          <h4>Step 3: Making Payment</h4>
+                          <ul>
+                            <li>The bot provides the total amount (including 
+
+fees) to transfer.</li>
+                            <li>After transferring, press <strong>"✅ I've 
+
+transferred"</strong> and send proof. An admin will verify.</li>
+                          </ul>
+                          <h4>Step 4: Waiting & Confirming Item</h4>
+                          <ul>
+                            <li>After payment is verified, wait for the seller 
+
+to send the item.</li>
+                            <li>Once received, press <strong>"✅ Confirm Goods 
+
+Received"</strong>.</li>
+                          </ul>
+                          <h4>Step 5: Completion</h4>
+                          <ul>
+                            <li>You will receive a notification that the 
+
+escrow is complete.</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">📦</span>Flow for 
+
+Sellers</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                           <p>As a seller, you approve requests, send goods, 
+
+and receive funds after the buyer's confirmation.</p>
+                          <h4>Step 1: Receiving & Approving Escrow</h4>
+                          <ul>
+                            <li>You will receive an escrow request. Press 
+
+<strong>"✅ Accept Escrow"</strong>.</li>
+                          </ul>
+                          <h4>Step 2: Waiting for Payment & Sending Goods</h4>
+                          <ul>
+                            <li>Once the admin verifies the payment, the bot 
+
+will notify you. Send the goods/service to the buyer.</li>
+                          </ul>
+                          <h4>Step 3: Providing Wallet Address</h4>
+                          <ul>
+                            <li>After sending the goods, the bot will ask for 
+
+your wallet address to receive payment.</li>
+                          </ul>
+                          <h4>Step 4: Receiving Funds & Completion</h4>
+                          <ul>
+                            <li>After the buyer confirms, funds will be 
+
+released to your wallet, and the escrow is complete.</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+               <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">⚖️</span>Dispute 
+
+Process</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>If a problem occurs, you can file a complaint. 
+
+The <strong>"⚠️ Complaint"</strong> button will become available at a certain 
+
+stage. An admin will review and help resolve the issue fairly between both 
+
+parties.</p>
+                      </div>
+                  </div>
+              </div>
+               <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">💰</span>Escrow Service 
+
+Fees</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                           <ul>
+                            <li><strong>AWEWE</strong>: 1% service fee of the 
+
+total transaction.</li>
+                            <li><strong>OTHER TOKENS (e.g., TON)</strong>: 5% 
+
+service fee of the total transaction.</li>
+                            <li>Fees are charged to the party who initiates 
+
+the escrow (the <strong>buyer</strong>).</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
       `,
       ru: `
-        <div class='section'>
-          <h2>Полное руководство по использованию Escrow Coinawe</h2>
-          <p>Добро пожаловать в сервис Escrow Coinawe! Это руководство объяснит безопасный и прозрачный рабочий процесс транзакций, от создания до завершения.</p>
+         <div class='section'>
+          <h2>Полное руководство по Escrow Coinawe</h2>
+          <p>Добро пожаловать в сервис Escrow Coinawe! Это руководство 
+
+объяснит безопасный и прозрачный рабочий процесс транзакций, от создания до 
+
+завершения.</p>
           <hr>
-          <h3><span style="color: var(--accent-gold);">🛒</span> Часть 1: Схема для Покупателя (Buyer)</h3>
-          <p>Как покупатель, вы являетесь стороной, которая инициирует сделку и сохраняет средства, пока товар/услуга не будет получена.</p>
-          <h4>Шаг 1: Создание Escrow</h4>
-          <ul>
-            <li>Выберите меню <strong>"➕ Создать Escrow"</strong>, затем выберите роль <strong>"👤 Покупатель"</strong>.</li>
-            <li>Бот попросит вас ввести детали сделки в следующем формате:
-              <div class='highlight'>@username_оппонента количество_предметов название_предмета</div>
-            </li>
-            <li><strong>Пример</strong>: <code>@relog 2 не-NFT имени пользователя</code></li>
-            <li>После сохранения деталей товара бот попросит вас ввести согласованную сумму и тип токена (примеры будут показаны ниже).
-              <div class='highlight'>100 TON</div>
-              <div class='highlight'>1000 AWEWE</div>
-            </li>
-          </ul>
-          <h4>Шаг 2: Ожидание подтверждения Продавца</h4>
-          <ul>
-            <li>После того, как вы отправите детали, бот отправит запрос на escrow продавцу.</li>
-            <li>Вы получите уведомление, если продавец подтвердит сделку.</li>
-          </ul>
-          <h4>Шаг 3: Осуществление платежа</h4>
-          <ul>
-            <li>Бот предоставит общую сумму, которую вы должны перевести, включая комиссию за escrow (1% для AWEWE, 5% для TON).</li>
-            <li>Переведите средства на адрес кошелька, предоставленный ботом.</li>
-            <li>После успешного перевода нажмите кнопку <strong>"✅ Я перевел"</strong> и отправьте подтверждение перевода (фото или скриншот).</li>
-            <li>Бот сохранит ваше подтверждение перевода, и администратор проверит платеж.</li>
-          </ul>
-          <h4>Шаг 4: Ожидание и подтверждение получения товара</h4>
-          <ul>
-            <li>После проверки вашего платежа бот уведомит вас, что продавец готовит товар.</li>
-            <li>После получения товара/услуги от продавца нажмите кнопку <strong>"✅ Подтвердить получение товара"</strong> в чате бота.</li>
-            <li>Это подтверждение уведомит администратора о необходимости выпустить средства продавцу.</li>
-          </ul>
-          <h4>Шаг 5: Завершение</h4>
-          <ul>
-            <li>Вы получите уведомление, что escrow завершен.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">📦</span> Часть 2: Схема для Продавца (Seller)</h3>
-          <p>Как продавец, вы получаете запрос на escrow, отправляете товар/услугу и получаете средства после подтверждения покупателем.</p>
-          <h4>Шаг 1: Получение и подтверждение Escrow</h4>
-          <ul>
-            <li>Вы получите уведомление от бота о новом запросе на escrow.</li>
-            <li>Нажмите кнопку <strong>"✅ Принять Escrow"</strong>, чтобы принять сделку.</li>
-          </ul>
-          <h4>Шаг 2: Ожидание оплаты и отправка товара</h4>
-          <ul>
-            <li>После того, как покупатель произведет оплату и администратор ее проверит, бот сообщит вам, что платеж подтвержден.</li>
-            <li>Отправьте товар/услугу покупателю.</li>
-          </ul>
-          <h4>Шаг 3: Предоставление адреса кошелька</h4>
-          <ul>
-            <li>После отправки товара бот попросит вас предоставить адрес вашего кошелька.</li>
-            <li>Отправьте адрес вашего кошелька в чат бота.</li>
-          </ul>
-          <h4>Шаг 4: Получение средств и завершение</h4>
-          <ul>
-            <li>Бот уведомит вас, что средства будут выпущены, как только покупатель подтвердит получение товара.</li>
-            <li>Вы получите уведомление, что средства были выпущены и escrow завершен.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">⚖️</span> Часть 3: Процесс рассмотрения споров (Dispute)</h3>
-          <p>Если во время сделки возникнут проблемы, вы можете подать жалобу.</p>
-          <ul>
-            <li>Кнопка <strong>"⚠️ Komplain"</strong> будет доступна после того, как продавец предоставит адрес своего кошелька.</li>
-            <li>Нажмите эту кнопку, чтобы начать процесс рассмотрения спора.</li>
-            <li>Бот автоматически уведомит администратора. Администратор рассмотрит и поможет разрешить проблему между обеими сторонами.</li>
-          </ul>
-          <hr>
-          <h3><span style="color: var(--accent-gold);">💰</span> Комиссия за услуги Escrow</h3>
-          <ul>
-            <li><strong>AWEWE</strong>: Комиссия за услуги составляет 1% от общей суммы сделки.</li>
-            <li><strong>ДРУГИЕ ТОКЕНЫ (например, TON)</strong>: Комиссия за услуги составляет 5% от общей суммы сделки.</li>
-            <li>Комиссия взимается со стороны, которая инициирует escrow (в данном случае, с <strong>покупателя</strong>).</li>
-          </ul>
+          <div class="accordion-container">
+              <div class="accordion-item">
+                  <button class="accordion-button"><span style="color: var(--
+
+accent-gold);">🌟</span> Основные преимущества бота Coinawe</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>Coinawe разработан для обеспечения безопасного, 
+
+эффективного и надежного опыта транзакций. Нажмите на каждый пункт ниже, чтобы 
+
+узнать подробности:</p>
+                           <div class="accordion-container">
+                              <div class="accordion-item">
+                                  <button class="accordion-
+
+button">Максимальная безопасность</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Ваши средства защищены ботом как 
+
+нейтральной третьей стороной. Продавец не получит оплату, пока вы не 
+
+подтвердите получение товара/услуги. Это предотвращает мошенничество, когда 
+
+продавец скрывается с деньгами. С другой стороны, покупатель не может отменить 
+
+платеж после отправки товара, что защищает продавца от фиктивных 
+
+покупателей.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-
+
+button">Автоматизированный и быстрый процесс</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Бот будет направлять вас и вашего 
+
+контрагента на каждом шагу. Больше не нужно спрашивать "какой следующий шаг?". 
+
+Автоматические уведомления отправляются, когда требуется действие, обеспечивая 
+
+плавное и быстрое течение процесса без ненужных задержек.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-
+
+button">Профессиональная поддержка администраторов</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>В случае возникновения спора вы 
+
+можете использовать функцию "Жалоба", чтобы вызвать администратора. Наша 
+
+команда администраторов рассмотрит доказательства с обеих сторон и примет 
+
+справедливое решение. Структура Супер-Администратора также обеспечивает 
+
+эскалацию для очень сложных случаев, гарантируя справедливость.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-button">Прозрачная 
+
+структура комиссий</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Все сервисные сборы 
+
+рассчитываются и отображаются прозрачно до того, как вы совершите платеж. Нет 
+
+никаких скрытых сборов или дополнительных платежей в конце. Вы с самого начала 
+
+точно знаете, какую сумму нужно заплатить, что позволяет лучше планировать 
+
+бюджет.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="accordion-item">
+                                  <button class="accordion-
+
+button">Многоязычная поддержка</button>
+                                  <div class="accordion-content">
+                                      <div class="accordion-content-inner">
+                                          <p>Наш бот разработан для мирового 
+
+сообщества. Благодаря поддержке нескольких языков вы можете безопасно 
+
+совершать сделки с пользователями из других стран. Языковой барьер сведен к 
+
+минимуму, так как каждая сторона получает инструкции на понятном ей языке, что 
+
+снижает риск недопонимания.</p>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="accordion-container">
+              <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">🛒</span>Схема для 
+
+Покупателя (Buyer)</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>Как покупатель, вы инициируете сделку и 
+
+сохраняете средства до получения товара/услуги.</p>
+                          <h4>Шаг 1: Создание Escrow</h4>
+                          <ul>
+                            <li>Выберите <strong>"➕ Создать Escrow"</strong>, 
+
+затем <strong>"👤 Покупатель"</strong>.</li>
+                            <li>Введите детали в формате: <div 
+
+class='highlight'>@username_оппонента количество название</div></li>
+                            <li><strong>Пример</strong>: <code>@relog 2 не-NFT 
+
+имени пользователя</code></li>
+                            <li>Введите сумму и тип токена: <div 
+
+class='highlight'>100 TON</div></li>
+                          </ul>
+                          <h4>Шаг 2: Ожидание подтверждения Продавца</h4>
+                          <ul>
+                            <li>Бот отправит запрос продавцу. Вы получите 
+
+уведомление о подтверждении.</li>
+                          </ul>
+                          <h4>Шаг 3: Осуществление платежа</h4>
+                          <ul>
+                            <li>Бот предоставит общую сумму (включая комиссию) 
+
+для перевода.</li>
+                            <li>После перевода нажмите <strong>"✅ Я 
+
+перевел"</strong> и отправьте подтверждение. Администратор проверит.</li>
+                          </ul>
+                          <h4>Шаг 4: Ожидание и подтверждение получения 
+
+товара</h4>
+                          <ul>
+                            <li>После проверки платежа ожидайте отправки 
+
+товара продавцом.</li>
+                            <li>После получения, нажмите <strong>"✅ Подтвердить 
+
+получение товара"</strong>.</li>
+                          </ul>
+                          <h4>Шаг 5: Завершение</h4>
+                          <ul>
+                            <li>Вы получите уведомление о завершении 
+
+escrow.</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+              <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">📦</span>Схема для 
+
+Продавца (Seller)</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                           <p>Как продавец, вы подтверждаете запросы, 
+
+отправляете товар и получаете средства после подтверждения покупателем.</p>
+                          <h4>Шаг 1: Получение и подтверждение Escrow</h4>
+                          <ul>
+                            <li>Вы получите запрос на escrow. Нажмите 
+
+<strong>"✅ Принять Escrow"</strong>.</li>
+                          </ul>
+                          <h4>Шаг 2: Ожидание оплаты и отправка товара</h4>
+                          <ul>
+                            <li>Как только администратор проверит платеж, бот 
+
+уведомит вас. Отправьте товар/услугу покупателю.</li>
+                          </ul>
+                          <h4>Шаг 3: Предоставление адреса кошелька</h4>
+                          <ul>
+                            <li>После отправки товара бот запросит адрес 
+
+вашего кошелька для получения платежа.</li>
+                          </ul>
+                          <h4>Шаг 4: Получение средств и завершение</h4>
+                          <ul>
+                            <li>После подтверждения покупателем, средства 
+
+будут отправлены на ваш кошелек, и escrow завершится.</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+               <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">⚖️</span>Процесс 
+
+рассмотрения споров (Dispute)</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                          <p>Если возникнет проблема, вы можете подать жалобу. 
+
+Кнопка <strong>"⚠️ Жалоба"</strong> станет доступна на определенном этапе. 
+
+Администратор рассмотрит и поможет справедливо разрешить проблему между обеими 
+
+сторонами.</p>
+                      </div>
+                  </div>
+              </div>
+               <div class="accordion-item">
+                  <button class="accordion-button main-section-button"><span 
+
+style="color: var(--accent-gold); margin-right: 10px;">💰</span>Комиссия за 
+
+услуги Escrow</button>
+                  <div class="accordion-content">
+                      <div class="accordion-content-inner">
+                           <ul>
+                            <li><strong>AWEWE</strong>: Комиссия 1% от общей 
+
+суммы сделки.</li>
+                            <li><strong>ДРУГИЕ ТОКЕНЫ (например, TON)
+
+</strong>: Комиссия 5% от общей суммы сделки.</li>
+                            <li>Комиссия взимается с стороны, инициирующей 
+
+escrow (<strong>покупателя</strong>).</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </div>
         </div>
-      `
+      `,
     };
     
+    function setupAccordions() {
+        const accordionContainers = document.querySelectorAll('.accordion-
+
+container');
+
+        accordionContainers.forEach(container => {
+            // Select only the direct child buttons for this container
+            const buttons = Array.from(container.querySelectorAll(':scope > 
+
+.accordion-item > .accordion-button'));
+
+            buttons.forEach(button => {
+                button.addEventListener('click', function() { // Use 
+
+'function' to get 'this' context
+                    const wasActive = this.classList.contains('active');
+
+                    // Close all buttons within this specific container group
+                    buttons.forEach(otherButton => {
+                        otherButton.classList.remove('active');
+                        otherButton.nextElementSibling.style.maxHeight = null;
+                    });
+
+                    // If the clicked button was not already active, open it
+                    if (!wasActive) {
+                        this.classList.add('active');
+                        const content = this.nextElementSibling;
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        
+                        // Recalculate parent accordion's height if this is a 
+
+nested accordion
+                        const parentAccordionContent = this.closest
+
+('.accordion-content');
+                        if (parentAccordionContent && 
+
+parentAccordionContent.style.maxHeight !== '0px') {
+                            parentAccordionContent.style.maxHeight = 
+
+parentAccordionContent.scrollHeight + "px";
+                        }
+                    }
+                });
+            });
+        });
+    }
+    
     function setLang(lang) {
+      if(lang === 'ru') {
+        let ru_content = content.ru;
+        ru_content = ru_content.replace('<strong>"⚠️ Komplain"</strong>', 
+
+'<strong>"⚠️ Жалоба"</strong>');
+        content.ru = ru_content;
+      }
+      
       const langButtons = document.querySelectorAll('.lang-buttons button');
       langButtons.forEach(button => {
         button.classList.remove('active');
@@ -514,6 +1180,8 @@
         contentDiv.innerHTML = content[lang];
         contentDiv.style.opacity = 1;
         contentDiv.style.transform = 'translateY(0)';
+        // Set up accordions after new content is loaded
+        setupAccordions();
       }, 300);
     }
 
