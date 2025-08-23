@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?
-
-family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
   <title>Panduan & FAQ – Bot Escrow Coinawe</title>
   <style>
     /* Global Styles & Variables */
@@ -45,12 +43,8 @@ family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 10% 20%, var(--accent-blue) 0%, 
-
-rgba(13, 15, 24, 0) 30%),
-                  radial-gradient(circle at 90% 80%, var(--accent-gold) 0%, 
-
-rgba(13, 15, 24, 0) 30%);
+      background: radial-gradient(circle at 10% 20%, var(--accent-blue) 0%, rgba(13, 15, 24, 0) 30%),
+                  radial-gradient(circle at 90% 80%, var(--accent-gold) 0%, rgba(13, 15, 24, 0) 30%);
       opacity: 0.1;
       animation: neon-pulse 20s infinite alternate ease-in-out;
       z-index: -1;
@@ -174,6 +168,9 @@ rgba(13, 15, 24, 0) 30%);
       white-space: pre-wrap;
       word-wrap: break-word;
     }
+.text-gold {
+  color: var(--accent-gold) !important;
+}
 
     /* Media Queries */
     @media (max-width: 600px) {
@@ -196,29 +193,19 @@ rgba(13, 15, 24, 0) 30%);
     <div class="section">
       <h2>🌟 Keunggulan Utama</h2>
       <ul>
-        <li><strong>Keamanan Maksimal:</strong> Dana Anda diamankan oleh bot 
-
-sebagai pihak ketiga yang netral. Penjual tidak akan menerima pembayaran 
+        <li><strong class="text-gold">Keamanan Maksimal:</strong> Dana Anda diamankan oleh bot sebagai pihak ketiga yang netral. Penjual tidak akan menerima pembayaran 
 
 sebelum Anda mengonfirmasi penerimaan barang/jasa.</li>
-        <li><strong>Proses Otomatis & Cepat:</strong> Bot akan memandu Anda di 
+        <li><strong class="text-gold">Proses Otomatis & Cepat:</strong> Bot akan memandu Anda di setiap langkah. Notifikasi otomatis dikirim saat ada tindakan yang 
 
-setiap langkah. Notifikasi otomatis dikirim saat ada tindakan yang diperlukan, 
-
-memastikan proses berjalan lancar.</li>
-        <li><strong>Dukungan Admin Profesional:</strong> Jika terjadi 
-
-sengketa, tim admin kami yang responsif akan menengahi untuk memastikan 
+diperlukan, memastikan proses berjalan lancar.</li>
+        <li><strong class="text-gold">Dukungan Admin Profesional:</strong> Jika terjadi sengketa, tim admin kami yang responsif akan menengahi untuk memastikan 
 
 penyelesaian yang adil.</li>
-        <li><strong>Struktur Biaya Transparan:</strong> Semua biaya layanan 
+        <li><strong class="text-gold">Struktur Biaya Transparan:</strong> Semua biaya layanan ditampilkan di awal. Tidak ada biaya tersembunyi. Anda tahu persis berapa 
 
-ditampilkan di awal. Tidak ada biaya tersembunyi. Anda tahu persis berapa yang 
-
-Anda bayar.</li>
-        <li><strong>Dukungan Multibahasa:</strong> Dengan antarmuka dalam 
-
-berbagai bahasa, kami melayani pengguna global untuk transaksi tanpa 
+yang Anda bayar.</li>
+        <li><strong class="text-gold">Dukungan Multibahasa:</strong> Dengan antarmuka dalam berbagai bahasa, kami melayani pengguna global untuk transaksi tanpa 
 
 batas.</li>
       </ul>
@@ -228,37 +215,21 @@ batas.</li>
       <h2>🔄 Alur Transaksi</h2>
       <h3>🛒 Alur untuk Pembeli (Buyer)</h3>
       <ol>
-        <li><strong>Memulai Escrow:</strong> Pilih menu "➕ Buat Escrow" > "👤 
-
-Pembeli". Masukkan detail: <div class='highlight'>@username_lawan jumlah_item 
+        <li><strong>Memulai Escrow:</strong> Pilih menu "➕ Buat Escrow" > "👤 Pembeli". Masukkan detail: <div class='highlight'>@username_lawan jumlah_item 
 
 nama_item</div> dan nominal: <div class='highlight'>100 TON</div></li>
-        <li><strong>Menunggu Persetujuan:</strong> Tunggu notifikasi 
-
-persetujuan dari penjual.</li>
-        <li><strong>Melakukan Pembayaran:</strong> Transfer dana ke wallet 
-
-bot, lalu tekan "✅ Saya sudah transfer" & kirim bukti.</li>
-        <li><strong>Mengonfirmasi Barang:</strong> Setelah barang diterima, 
-
-tekan "✅ Konfirmasi Barang Diterima".</li>
-        <li><strong>Selesai:</strong> Transaksi selesai!</li>
+        <li><strong class="text-gold">Menunggu Persetujuan:</strong> Tunggu notifikasi persetujuan dari penjual.</li>
+        <li><strong class="text-gold">Melakukan Pembayaran:</strong> Transfer dana ke wallet bot, lalu tekan "✅ Saya sudah transfer" & kirim bukti.</li>
+        <li><strong class="text-gold">Mengonfirmasi Barang:</strong> Setelah barang diterima, tekan "✅ Konfirmasi Barang Diterima".</li>
+        <li><strong class="text-gold">Selesai:</strong> Transaksi selesai!</li>
       </ol>
       
       <h3>📦 Alur untuk Penjual (Seller)</h3>
        <ol>
-        <li><strong>Menyetujui Escrow:</strong> Anda akan menerima notifikasi 
-
-permintaan. Tekan "✅ Setujui Escrow".</li>
-        <li><strong>Mengirim Barang:</strong> Setelah pembayaran diverifikasi, 
-
-kirim barang/jasa ke pembeli.</li>
-        <li><strong>Memberikan Alamat Wallet:</strong> Bot akan meminta alamat 
-
-wallet Anda untuk menerima pembayaran.</li>
-        <li><strong>Menerima Dana:</strong> Setelah pembeli konfirmasi, dana 
-
-akan dilepaskan ke wallet Anda.</li>
+        <li><strong>Menyetujui Escrow:</strong> Anda akan menerima notifikasi permintaan. Tekan "✅ Setujui Escrow".</li>
+        <li><strong>Mengirim Barang:</strong> Setelah pembayaran diverifikasi, kirim barang/jasa ke pembeli.</li>
+        <li><strong>Memberikan Alamat Wallet:</strong> Bot akan meminta alamat wallet Anda untuk menerima pembayaran.</li>
+        <li><strong>Menerima Dana:</strong> Setelah pembeli konfirmasi, dana akan dilepaskan ke wallet Anda.</li>
       </ol>
     </div>
     
@@ -269,25 +240,17 @@ akan dilepaskan ke wallet Anda.</li>
         <li><code>/start</code> – Memulai atau reset interaksi.</li>
         <li><code>/history</code> – Melihat riwayat transaksi.</li>
         <li><code>/myid</code> – Menampilkan profil pengguna Anda.</li>
-        <li><code>/admin_list</code> – Melihat daftar admin & superadmin yang 
-
-bertugas.</li>
-        <li><code>/cancel</code> – Membatalkan proses escrow yang sedang 
-
-berjalan.</li>
+        <li><code>/admin_list</code> – Melihat daftar admin & superadmin yang bertugas.</li>
+        <li><code>/cancel</code> – Membatalkan proses escrow yang sedang berjalan.</li>
       </ul>
       <h3>Admin</h3>
       <ul>
         <li><code>/admin</code> – Mengakses menu khusus admin.</li>
-        <li><code>/release [ID Escrow] [TXhash]</code> – Merilis dana secara 
-
-manual jika diperlukan.</li>
+        <li><code>/release [ID Escrow] [TXhash]</code> – Merilis dana secara manual jika diperlukan.</li>
       </ul>
       <h3>Superadmin</h3>
       <ul>
-        <li><code>/broadcast [pesan]</code> – Mengirim pesan ke semua pengguna 
-
-bot.</li>
+        <li><code>/broadcast [pesan]</code> – Mengirim pesan ke semua pengguna bot.</li>
         <li><code>/addadmin [USER_ID]</code> – Menambahkan admin baru.</li>
         <li><code>/removeadmin [USER_ID]</code> – Menghapus admin.</li>
       </ul>
@@ -297,72 +260,42 @@ bot.</li>
       <h2>❓ FAQ (Pertanyaan Umum)</h2>
       
       <h4>Umum</h4>
-      <p><strong>Apa itu Coinawe Bot?</strong><br>
-      Coinawe adalah layanan penengah (escrow) otomatis yang mengamankan 
+      <p><strong class="text-gold">Apa itu Coinawe Bot?</strong><br>
+      Coinawe adalah layanan penengah (escrow) otomatis yang mengamankan transaksi Anda. Kami bertindak sebagai pihak ketiga netral yang menahan dana hingga kedua 
 
-transaksi Anda. Kami bertindak sebagai pihak ketiga netral yang menahan dana 
+belah pihak puas.</p>
+      <p><strong class="text-gold">Berapa lama batas waktu pembayaran?</strong><br>
+      Anda memiliki batas waktu tertentu (misalnya, 6 jam) untuk membayar. Jika terlewat, transaksi otomatis batal.</p>
+      <p><strong class="text-gold">Bagaimana jika saya sudah mengirim dana ke bot tapi lawan transaksi menghilang?</strong><br>
+      Tenang, dana Anda aman. Tujuan utama escrow adalah melindungi dana jika salah satu pihak menghilang. Jika lawan transaksi tidak melanjutkan escrow, bot akan 
 
-hingga kedua belah pihak puas.</p>
-      <p><strong>Berapa lama batas waktu pembayaran?</strong><br>
-      Anda memiliki batas waktu tertentu (misalnya, 6 jam) untuk membayar. 
-
-Jika terlewat, transaksi otomatis batal.</p>
-      <p><strong>Bagaimana jika saya sudah mengirim dana ke bot tapi lawan 
-
-transaksi menghilang?</strong><br>
-      Tenang, dana Anda aman. Tujuan utama escrow adalah melindungi dana jika 
-
-salah satu pihak menghilang. Jika lawan transaksi tidak melanjutkan escrow, 
-
-bot akan membatalkannya secara otomatis setelah batas waktu tercapai dan admin 
-
-akan memproses pengembalian dana Anda.</p>
+membatalkannya secara otomatis setelah batas waktu tercapai dan admin akan memproses pengembalian dana Anda.</p>
       
       <h4>Untuk Pembeli</h4>
-      <p><strong>Bagaimana jika Penjual tidak merespons permintaan escrow?
-
-</strong><br>
-      Jika penjual tidak menyetujui escrow dalam batas waktu, transaksi akan 
-
-dibatalkan secara otomatis. Anda tidak perlu melakukan apa-apa.</p>
-      <p><strong>Bisakah saya membatalkan escrow?</strong><br>
-      Anda bisa membatalkan escrow kapan saja SEBELUM melakukan pembayaran. 
-
-Setelah pembayaran diverifikasi, pembatalan sepihak tidak bisa dilakukan.</p>
+      <p><strong class="text-gold">Bagaimana jika Penjual tidak merespons permintaan escrow?</strong><br>
+      Jika penjual tidak menyetujui escrow dalam batas waktu, transaksi akan dibatalkan secara otomatis. Anda tidak perlu melakukan apa-apa.</p>
+      <p><strong class="text-gold">Bisakah saya membatalkan escrow?</strong><br>
+      Anda bisa membatalkan escrow kapan saja SEBELUM melakukan pembayaran. Setelah pembayaran diverifikasi, pembatalan sepihak tidak bisa dilakukan.</p>
 
       <h4>Untuk Penjual</h4>
-      <p><strong>Bagaimana jika Pembeli tidak membayar?</strong><br>
-      Jika pembeli tidak membayar dalam batas waktu, transaksi otomatis 
-
-dibatalkan oleh bot. Anda bisa bertransaksi dengan orang lain.</p>
-      <p><strong>Kapan saya menerima dana?</strong><br>
-      Segera setelah pembeli mengonfirmasi penerimaan barang, admin akan 
-
-memproses pencairan dana (payout). Anda akan diberi notifikasi beserta 
-
-TXhash.</p>
+      <p><strong class="text-gold">Bagaimana jika Pembeli tidak membayar?</strong><br>
+      Jika pembeli tidak membayar dalam batas waktu, transaksi otomatis dibatalkan oleh bot. Anda bisa bertransaksi dengan orang lain.</p>
+      <p><strong class="text-gold">Kapan saya menerima dana?</strong><br>
+      Segera setelah pembeli mengonfirmasi penerimaan barang, admin akan memproses pencairan dana (payout). Anda akan diberi notifikasi beserta TXhash.</p>
     </div>
     
     <div class="section">
       <h2>⚙️ Aspek Teknis & Otomatisasi</h2>
       <ul>
-        <li><b>Platform</b>: Google Apps Script (GAS).</li>
+        <li><b>Platform</b>: Telegram.</li>
         <li><b>Database</b>: Google Sheets.</li>
       </ul>
       <h3>Fungsi Otomatis</h3>
       <ul>
-        <li><code>checkPaymentTimeouts</code> – Membatalkan escrow yang belum 
-
-dibayar (15 menit sekali).</li>
-        <li><code>checkStuckPayouts</code> – Ingatkan admin jika payout 
-
-tertunda (5 menit sekali).</li>
-        <li><code>clearInactiveStates</code> – Bersihkan state user tidak 
-
-aktif (1 jam sekali).</li>
-        <li><code>processBroadcastQueue</code> – Atur antrian broadcast agar 
-
-tidak melebihi batas API.</li>
+        <li><code>checkPaymentTimeouts</code> – Membatalkan escrow yang belum dibayar (15 menit sekali).</li>
+        <li><code>checkStuckPayouts</code> – Ingatkan admin jika payout tertunda (5 menit sekali).</li>
+        <li><code>clearInactiveStates</code> – Bersihkan state user tidak aktif (1 jam sekali).</li>
+        <li><code>processBroadcastQueue</code> – Atur antrian broadcast agar tidak melebihi batas API.</li>
       </ul>
     </div>
   </div>
