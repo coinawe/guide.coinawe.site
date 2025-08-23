@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Panduan & FAQ Escrow Coinawe</title>
-  <link rel="icon" href="https://coinawe.site/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?
+
+family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <title>Panduan & FAQ – Bot Escrow Coinawe</title>
   <style>
     /* Global Styles & Variables */
     :root {
@@ -19,53 +20,56 @@
       --accent-gold: #ffc107;
       --border-color: rgba(0, 191, 255, 0.3);
       --highlight-bg: rgba(0, 191, 255, 0.1);
-      --accordion-hover-bg: rgba(0, 191, 255, 0.05);
     }
-    
+
     * {
       box-sizing: border-box;
-      transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
     }
-    
+
     body {
       font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 2rem 1rem;
       background-color: var(--bg-color);
       color: var(--text-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
       min-height: 100vh;
       overflow-x: hidden;
       position: relative;
     }
 
-    /* Subtle Animated Background */
+    /* Fixed Animated Background */
     body::before {
       content: '';
-      position: absolute;
+      position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 10% 20%, var(--accent-blue) 0%, rgba(13, 15, 24, 0) 30%),
-                  radial-gradient(circle at 90% 80%, var(--accent-gold) 0%, rgba(13, 15, 24, 0) 30%);
+      background: radial-gradient(circle at 10% 20%, var(--accent-blue) 0%, 
+
+rgba(13, 15, 24, 0) 30%),
+                  radial-gradient(circle at 90% 80%, var(--accent-gold) 0%, 
+
+rgba(13, 15, 24, 0) 30%);
       opacity: 0.1;
       animation: neon-pulse 20s infinite alternate ease-in-out;
+      z-index: -1;
+      pointer-events: none;
     }
 
     @keyframes neon-pulse {
       0% { transform: scale(1); }
       100% { transform: scale(1.2); }
     }
-    
-    /* Header & Main Container */
+
+    /* Header, Container, Footer */
     .header {
       text-align: center;
       margin-bottom: 2rem;
-      z-index: 10;
-      animation: fade-in-up 1s ease-out;
+      position: relative;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .header h1 {
@@ -75,58 +79,31 @@
       margin: 0;
       text-shadow: 0 0 15px var(--accent-blue);
     }
-    
+
     .header p {
       font-size: 1.1rem;
       font-weight: 300;
       color: var(--text-color);
       margin-top: 0.5rem;
     }
-    
+
     .container {
       max-width: 900px;
       width: 100%;
-      z-index: 10;
+      position: relative;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 2rem;
+      padding-bottom: 1rem;
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.5);
     }
     
-    /* Language Buttons */
-    .lang-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 2.5rem;
-    }
-    
-    .lang-buttons button {
-      background: var(--card-bg);
-      color: var(--text-color);
-      border: 1px solid var(--border-color);
-      padding: 0.7rem 1.5rem;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: all 0.2s ease-in-out;
-      flex: 1 0 auto;
-      min-width: 120px;
-      backdrop-filter: blur(5px);
-    }
-    
-    .lang-buttons button:hover {
-      background: var(--accent-blue);
-      color: #000;
-      box-shadow: 0 0 10px var(--accent-blue);
-    }
-    
-    .lang-buttons button.active {
-      background: var(--accent-blue);
-      color: #000;
-      box-shadow: 0 0 20px var(--accent-blue), 0 0 10px var(--accent-blue) inset;
-      transform: scale(1.05);
-    }
-    
-    /* Content Sections */
+    /* Section Styles */
     .section {
       margin-bottom: 2rem;
       background: var(--card-bg);
@@ -134,16 +111,12 @@
       border-radius: 12px;
       border: 1px solid var(--border-color);
       box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fade-in-up 0.8s forwards;
       backdrop-filter: blur(5px);
     }
-    
+
     .section h2 {
       font-size: 1.8rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--heading-color);
       margin-top: 0;
       border-bottom: 2px solid var(--accent-blue);
@@ -151,35 +124,41 @@
       margin-bottom: 1.5rem;
     }
     
-    .section h4 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--accent-blue);
-      margin-top: 1.5rem;
-      margin-bottom: 1rem;
-    }
-    .faq-category {
-        font-size: 1.2rem;
-        font-weight: 700;
-        color: var(--accent-gold);
+    .section h3 {
         margin-top: 2rem;
         margin-bottom: 1rem;
-        padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--border-color);
+        color: var(--accent-gold);
+        font-size: 1.4rem;
+        font-weight: 600;
     }
     
-    p, li {
-      font-weight: 300;
-      line-height: 1.7;
+    .section h4 {
+        margin-top: 1.5rem;
+        color: var(--accent-blue);
+        font-size: 1.1rem;
     }
 
-    ul {
-      padding-left: 20px;
-      margin-bottom: 0;
+    .section ul, .section ol {
+        padding-left: 20px;
+        line-height: 1.8;
     }
-
-    li strong {
-      color: var(--heading-color);
+    
+    .section li {
+        margin-bottom: 0.5rem;
+    }
+    
+    .section strong, .section b {
+        color: var(--heading-color);
+        font-weight: 600;
+    }
+    
+    .section code {
+        background-color: var(--highlight-bg);
+        padding: 0.2em 0.4em;
+        border-radius: 4px;
+        font-family: monospace;
+        color: var(--accent-blue);
+        font-size: 0.9em;
     }
     
     .highlight {
@@ -187,366 +166,209 @@
       padding: 1rem;
       border-left: 4px solid var(--accent-blue);
       border-radius: 6px;
-      margin: 1.5rem 0;
+      margin: 1rem 0;
       font-family: 'Courier New', Courier, monospace;
       font-size: 0.9rem;
       color: var(--text-color);
       overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
 
-    hr {
-      border: none;
-      border-top: 1px dashed var(--border-color);
-      margin: 2rem 0;
-    }
-
-    /* ACCORDION STYLES */
-    .accordion-container {
-        border-top: 1px solid var(--border-color);
-    }
-    .accordion-container .accordion-container { /* nested container style */
-        border-top: none;
-        margin-top: 1rem;
-    }
-    .accordion-item {
-        border-bottom: 1px solid var(--border-color);
-    }
-    .accordion-button {
-        background-color: transparent;
-        color: var(--heading-color);
-        cursor: pointer;
-        padding: 1.2rem 1rem;
-        width: 100%;
-        text-align: left;
-        border: none;
-        outline: none;
-        font-size: 1.1rem;
-        font-weight: 600;
-        font-family: 'Inter', sans-serif;
-        transition: background-color 0.2s ease;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-    .accordion-button.main-section-button {
-        font-size: 1.4rem;
-        padding: 1.5rem 1rem;
-    }
-    .accordion-button:hover {
-        background-color: var(--accordion-hover-bg);
-    }
-    .accordion-button::after {
-        content: '+';
-        font-size: 1.5rem;
-        font-weight: 300;
-        color: var(--accent-blue);
-        transition: transform 0.3s ease;
-    }
-    .accordion-button.active::after {
-        content: '−';
-        transform: rotate(180deg);
-    }
-    .accordion-content {
-        max-height: 0;
-        overflow: hidden;
-        transition: max-height 0.4s ease-out;
-        background-color: var(--accordion-hover-bg);
-    }
-    .accordion-content-inner {
-        padding: 0 1.5rem 1.5rem 1.5rem;
-        border-top: 1px solid var(--border-color);
-    }
-    .accordion-content-inner p:first-child {
-        margin-top: 1.5rem;
-    }
-
-
-    .footer {
-      text-align: center;
-      margin-top: 2rem;
-      font-size: 0.8rem;
-      color: rgba(255, 255, 255, 0.5);
-    }
-
-    @keyframes fade-in-up {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-    
-    /* Media Queries for Responsiveness */
+    /* Media Queries */
     @media (max-width: 600px) {
+      body { padding: 1.5rem 1rem; }
       .header h1 { font-size: 2rem; }
       .header p { font-size: 0.9rem; }
       .section { padding: 1.5rem; }
       .section h2 { font-size: 1.5rem; }
-      .accordion-button.main-section-button { font-size: 1.2rem; }
-      .section h4 { font-size: 1rem; }
-      .lang-buttons button {
-        font-size: 0.8rem;
-        padding: 0.6rem 1rem;
-      }
+      .section h3 { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
+  <div class="header">
+    <h1>Panduan & FAQ Escrow Coinawe</h1>
+    <p>Panduan lengkap dan jawaban atas pertanyaan umum seputar Coinawe.</p>
+  </div>
+
   <div class="container">
-    <div class="header">
-      <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w.w3.org/2000/svg">
-        <path d="M12 2L2 7V17L12 22L22 17V7L12 2ZM12 17L7 14.5L7 9.5L12 12L12 17ZM12 12L17 9.5L17 14.5L12 17L12 12Z" stroke="var(--accent-blue)" stroke-width="2" stroke-linejoin="round"/>
-        <path d="M12 12L7 9.5L12 7L17 9.5L12 12Z" stroke="var(--accent-blue)" stroke-width="2" stroke-linejoin="round"/>
-      </svg>
-      <h1>Panduan & FAQ Escrow Coinawe</h1>
-      <p>Panduan lengkap dan jawaban atas pertanyaan umum seputar Coinawe.</p>
+    <div class="section">
+      <h2>🌟 Keunggulan Utama</h2>
+      <ul>
+        <li><strong>Keamanan Maksimal:</strong> Dana Anda diamankan oleh bot 
+
+sebagai pihak ketiga yang netral. Penjual tidak akan menerima pembayaran 
+
+sebelum Anda mengonfirmasi penerimaan barang/jasa.</li>
+        <li><strong>Proses Otomatis & Cepat:</strong> Bot akan memandu Anda di 
+
+setiap langkah. Notifikasi otomatis dikirim saat ada tindakan yang diperlukan, 
+
+memastikan proses berjalan lancar.</li>
+        <li><strong>Dukungan Admin Profesional:</strong> Jika terjadi 
+
+sengketa, tim admin kami yang responsif akan menengahi untuk memastikan 
+
+penyelesaian yang adil.</li>
+        <li><strong>Struktur Biaya Transparan:</strong> Semua biaya layanan 
+
+ditampilkan di awal. Tidak ada biaya tersembunyi. Anda tahu persis berapa yang 
+
+Anda bayar.</li>
+        <li><strong>Dukungan Multibahasa:</strong> Dengan antarmuka dalam 
+
+berbagai bahasa, kami melayani pengguna global untuk transaksi tanpa 
+
+batas.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>🔄 Alur Transaksi</h2>
+      <h3>🛒 Alur untuk Pembeli (Buyer)</h3>
+      <ol>
+        <li><strong>Memulai Escrow:</strong> Pilih menu "➕ Buat Escrow" > "👤 
+
+Pembeli". Masukkan detail: <div class='highlight'>@username_lawan jumlah_item 
+
+nama_item</div> dan nominal: <div class='highlight'>100 TON</div></li>
+        <li><strong>Menunggu Persetujuan:</strong> Tunggu notifikasi 
+
+persetujuan dari penjual.</li>
+        <li><strong>Melakukan Pembayaran:</strong> Transfer dana ke wallet 
+
+bot, lalu tekan "✅ Saya sudah transfer" & kirim bukti.</li>
+        <li><strong>Mengonfirmasi Barang:</strong> Setelah barang diterima, 
+
+tekan "✅ Konfirmasi Barang Diterima".</li>
+        <li><strong>Selesai:</strong> Transaksi selesai!</li>
+      </ol>
+      
+      <h3>📦 Alur untuk Penjual (Seller)</h3>
+       <ol>
+        <li><strong>Menyetujui Escrow:</strong> Anda akan menerima notifikasi 
+
+permintaan. Tekan "✅ Setujui Escrow".</li>
+        <li><strong>Mengirim Barang:</strong> Setelah pembayaran diverifikasi, 
+
+kirim barang/jasa ke pembeli.</li>
+        <li><strong>Memberikan Alamat Wallet:</strong> Bot akan meminta alamat 
+
+wallet Anda untuk menerima pembayaran.</li>
+        <li><strong>Menerima Dana:</strong> Setelah pembeli konfirmasi, dana 
+
+akan dilepaskan ke wallet Anda.</li>
+      </ol>
     </div>
     
-    <div class="lang-buttons">
-      <button onclick="setLang('id')" class="active">🇮🇩 Indonesia</button>
-      <button onclick="setLang('en')">🇬🇧 English</button>
-      <button onclick="setLang('ru')">🇷🇺 Русский</button>
+    <div class="section">
+      <h2>🧑‍💻 Perintah Bot</h2>
+      <h3>Pengguna Umum</h3>
+      <ul>
+        <li><code>/start</code> – Memulai atau reset interaksi.</li>
+        <li><code>/history</code> – Melihat riwayat transaksi.</li>
+        <li><code>/myid</code> – Menampilkan profil pengguna Anda.</li>
+        <li><code>/admin_list</code> – Melihat daftar admin & superadmin yang 
+
+bertugas.</li>
+        <li><code>/cancel</code> – Membatalkan proses escrow yang sedang 
+
+berjalan.</li>
+      </ul>
+      <h3>Admin</h3>
+      <ul>
+        <li><code>/admin</code> – Mengakses menu khusus admin.</li>
+        <li><code>/release [ID Escrow] [TXhash]</code> – Merilis dana secara 
+
+manual jika diperlukan.</li>
+      </ul>
+      <h3>Superadmin</h3>
+      <ul>
+        <li><code>/broadcast [pesan]</code> – Mengirim pesan ke semua pengguna 
+
+bot.</li>
+        <li><code>/addadmin [USER_ID]</code> – Menambahkan admin baru.</li>
+        <li><code>/removeadmin [USER_ID]</code> – Menghapus admin.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>❓ FAQ (Pertanyaan Umum)</h2>
+      
+      <h4>Umum</h4>
+      <p><strong>Apa itu Coinawe Bot?</strong><br>
+      Coinawe adalah layanan penengah (escrow) otomatis yang mengamankan 
+
+transaksi Anda. Kami bertindak sebagai pihak ketiga netral yang menahan dana 
+
+hingga kedua belah pihak puas.</p>
+      <p><strong>Berapa lama batas waktu pembayaran?</strong><br>
+      Anda memiliki batas waktu tertentu (misalnya, 6 jam) untuk membayar. 
+
+Jika terlewat, transaksi otomatis batal.</p>
+      <p><strong>Bagaimana jika saya sudah mengirim dana ke bot tapi lawan 
+
+transaksi menghilang?</strong><br>
+      Tenang, dana Anda aman. Tujuan utama escrow adalah melindungi dana jika 
+
+salah satu pihak menghilang. Jika lawan transaksi tidak melanjutkan escrow, 
+
+bot akan membatalkannya secara otomatis setelah batas waktu tercapai dan admin 
+
+akan memproses pengembalian dana Anda.</p>
+      
+      <h4>Untuk Pembeli</h4>
+      <p><strong>Bagaimana jika Penjual tidak merespons permintaan escrow?
+
+</strong><br>
+      Jika penjual tidak menyetujui escrow dalam batas waktu, transaksi akan 
+
+dibatalkan secara otomatis. Anda tidak perlu melakukan apa-apa.</p>
+      <p><strong>Bisakah saya membatalkan escrow?</strong><br>
+      Anda bisa membatalkan escrow kapan saja SEBELUM melakukan pembayaran. 
+
+Setelah pembayaran diverifikasi, pembatalan sepihak tidak bisa dilakukan.</p>
+
+      <h4>Untuk Penjual</h4>
+      <p><strong>Bagaimana jika Pembeli tidak membayar?</strong><br>
+      Jika pembeli tidak membayar dalam batas waktu, transaksi otomatis 
+
+dibatalkan oleh bot. Anda bisa bertransaksi dengan orang lain.</p>
+      <p><strong>Kapan saya menerima dana?</strong><br>
+      Segera setelah pembeli mengonfirmasi penerimaan barang, admin akan 
+
+memproses pencairan dana (payout). Anda akan diberi notifikasi beserta 
+
+TXhash.</p>
     </div>
     
-    <div id="content"></div>
+    <div class="section">
+      <h2>⚙️ Aspek Teknis & Otomatisasi</h2>
+      <ul>
+        <li><b>Platform</b>: Google Apps Script (GAS).</li>
+        <li><b>Database</b>: Google Sheets.</li>
+      </ul>
+      <h3>Fungsi Otomatis</h3>
+      <ul>
+        <li><code>checkPaymentTimeouts</code> – Membatalkan escrow yang belum 
+
+dibayar (15 menit sekali).</li>
+        <li><code>checkStuckPayouts</code> – Ingatkan admin jika payout 
+
+tertunda (5 menit sekali).</li>
+        <li><code>clearInactiveStates</code> – Bersihkan state user tidak 
+
+aktif (1 jam sekali).</li>
+        <li><code>processBroadcastQueue</code> – Atur antrian broadcast agar 
+
+tidak melebihi batas API.</li>
+      </ul>
+    </div>
   </div>
 
   <div class="footer">
-    <p>&copy; 2024 Coinawe. All rights reserved.</p>
+    &copy; 2024 Coinawe. All rights reserved.
   </div>
-  
-  <script>
-    const content = {
-      id: `
-        <div class='section'>
-          <h2>Panduan & FAQ</h2>
-          <p>Selamat datang di layanan escrow Coinawe! Buka setiap bagian di bawah untuk menemukan panduan lengkap dan jawaban atas pertanyaan umum.</p>
-          
-          <div class="accordion-container">
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">🌟</span>Keunggulan Utama</button>
-                  <div class="accordion-content">
-                      <div class="accordion-content-inner">
-                          <p>Coinawe dirancang untuk memberikan pengalaman transaksi yang aman, efisien, dan terpercaya. Klik setiap poin di bawah untuk melihat detailnya:</p>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Keamanan Maksimal</button><div class="accordion-content"><div class="accordion-content-inner"><p>Dana Anda diamankan oleh bot sebagai pihak ketiga yang netral. Penjual tidak akan menerima pembayaran sebelum Anda mengonfirmasi penerimaan barang/jasa. Ini mencegah penipuan di mana penjual kabur setelah menerima uang. Sebaliknya, pembeli tidak bisa membatalkan pembayaran setelah barang dikirim, melindungi penjual.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Proses Otomatis & Cepat</button><div class="accordion-content"><div class="accordion-content-inner"><p>Bot akan memandu Anda dan lawan transaksi Anda di setiap langkah. Tidak perlu lagi bertanya "langkah selanjutnya apa?". Notifikasi otomatis dikirim saat ada tindakan yang diperlukan, memastikan proses berjalan lancar dan cepat.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Dukungan Admin Profesional</button><div class="accordion-content"><div class="accordion-content-inner"><p>Jika terjadi sengketa, tim admin kami yang responsif akan menengahi untuk memastikan penyelesaian yang adil. Struktur Super Admin juga memastikan adanya eskalasi untuk kasus yang sangat rumit.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Struktur Biaya Transparan</button><div class="accordion-content"><div class="accordion-content-inner"><p>Semua biaya layanan ditampilkan di awal. Tidak ada biaya tersembunyi. Anda tahu persis berapa yang Anda bayar.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Dukungan Multibahasa</button><div class="accordion-content"><div class="accordion-content-inner"><p>Dengan antarmuka dalam berbagai bahasa, kami melayani basis pengguna global untuk transaksi tanpa batas, mengurangi risiko kesalahpahaman.</p></div></div></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">💼</span>Alur untuk Pembeli (Buyer)</button>
-                  <div class="accordion-content"><div class="accordion-content-inner"><p>Panduan langkah demi langkah untuk Anda sebagai pembeli.</p><h4>Langkah 1: Memulai Escrow</h4><ul><li>Pilih menu <strong>"➕ Buat Escrow"</strong> > <strong>"👤 Pembeli"</strong>.</li><li>Masukkan detail: <div class='highlight'>@username_lawan jumlah_item nama_item</div></li><li>Masukkan nominal & token: <div class='highlight'>100 TON</div></li></ul><h4>Langkah 2: Menunggu Persetujuan Penjual</h4><ul><li>Tunggu notifikasi persetujuan dari penjual.</li></ul><h4>Langkah 3: Melakukan Pembayaran</h4><ul><li>Transfer dana (termasuk biaya) ke wallet bot.</li><li>Tekan <strong>"✅ Saya sudah transfer"</strong> & kirim bukti.</li></ul><h4>Langkah 4: Mengonfirmasi Barang</h4><ul><li>Setelah pembayaran diverifikasi & barang diterima, tekan <strong>"✅ Konfirmasi Barang Diterima"</strong>.</li></ul><h4>Langkah 5: Selesai</h4><ul><li>Transaksi selesai!</li></ul></div></div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">📦</span>Alur untuk Penjual (Seller)</button>
-                  <div class="accordion-content"><div class="accordion-content-inner"><p>Panduan langkah demi langkah untuk Anda sebagai penjual.</p><h4>Langkah 1: Menyetujui Escrow</h4><ul><li>Anda akan menerima notifikasi permintaan. Tekan <strong>"✅ Setujui Escrow"</strong>.</li></ul><h4>Langkah 2: Mengirim Barang</h4><ul><li>Setelah pembayaran diverifikasi, kirim barang/jasa ke pembeli.</li></ul><h4>Langkah 3: Memberikan Alamat Wallet</h4><ul><li>Bot akan meminta alamat wallet Anda untuk menerima pembayaran.</li></ul><h4>Langkah 4: Menerima Dana</h4><ul><li>Setelah pembeli konfirmasi, dana akan dilepaskan ke wallet Anda.</li></ul></div></div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">❓</span>FAQ (Pertanyaan Umum)</button>
-                  <div class="accordion-content">
-                      <div class="accordion-content-inner">
-                          <p>Temukan jawaban untuk pertanyaan yang paling sering diajukan.</p>
-                          <div class="faq-category">Umum</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Apa itu Coinawe Bot?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Coinawe adalah layanan penengah (escrow) otomatis yang mengamankan transaksi Anda. Kami bertindak sebagai pihak ketiga netral yang menahan dana hingga kedua belah pihak puas.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Berapa lama batas waktu pembayaran?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Anda memiliki batas waktu tertentu (misalnya, 6 jam) untuk membayar. Jika terlewat, transaksi otomatis batal.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">Untuk Pembeli</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Bagaimana jika Penjual tidak merespons?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Jika penjual tidak menyetujui escrow dalam batas waktu, transaksi akan dibatalkan secara otomatis. Anda tidak perlu melakukan apa-apa.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Bisakah saya membatalkan escrow?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Anda bisa membatalkan escrow kapan saja SEBELUM melakukan pembayaran. Setelah pembayaran diverifikasi, pembatalan sepihak tidak bisa dilakukan.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">Untuk Penjual</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Bagaimana jika Pembeli tidak membayar?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Jika pembeli tidak membayar dalam batas waktu, transaksi otomatis dibatalkan oleh bot. Anda bisa bertransaksi dengan orang lain.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Kapan saya menerima dana?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Segera setelah pembeli mengonfirmasi penerimaan barang, admin akan memproses pencairan dana (payout). Anda akan diberi notifikasi beserta TXhash.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">Penyelesaian Masalah</div>
-                           <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Apa itu bukti yang valid untuk sengketa?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Bukti yang kuat meliputi: video unboxing tanpa jeda, screenshot percakapan penuh, dan nomor resi pengiriman yang valid.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Bagaimana cara menghubungi support?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Untuk bantuan di luar alur transaksi, silakan hubungi tim support kami di Telegram: <strong>@CoinaweSupport</strong>.</p></div></div></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-      `,
-      en: `
-        <div class='section'>
-          <h2>Guide & FAQ</h2>
-          <p>Welcome to the Coinawe escrow service! Open each section below to find the complete guide and answers to frequently asked questions.</p>
-          
-          <div class="accordion-container">
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">🌟</span>Key Advantages</button>
-                  <div class="accordion-content"><div class="accordion-content-inner"><p>Coinawe is designed to provide a secure, efficient, and trustworthy transaction experience. Click each point below for details:</p><div class="accordion-container"><div class="accordion-item"><button class="accordion-button">Maximum Security</button><div class="accordion-content"><div class="accordion-content-inner"><p>Your funds are secured by the bot as a neutral third party. The seller won't be paid until you confirm receipt, protecting you from fraud. Conversely, the buyer cannot cancel after payment, protecting the seller.</p></div></div></div><div class="accordion-item"><button class="accordion-button">Automated & Fast Process</button><div class="accordion-content"><div class="accordion-content-inner"><p>The bot guides you and your counterparty at every step. No more "what's next?". Automated notifications ensure a smooth and fast process.</p></div></div></div><div class="accordion-item"><button class="accordion-button">Professional Admin Support</button><div class="accordion-content"><div class="accordion-content-inner"><p>In case of a dispute, our responsive admin team will mediate for a fair resolution. The Super Admin structure ensures a proper escalation path.</p></div></div></div><div class="accordion-item"><button class="accordion-button">Transparent Fee Structure</button><div class="accordion-content"><div class="accordion-content-inner"><p>All service fees are displayed upfront. There are no hidden costs. You know exactly what you're paying.</p></div></div></div><div class="accordion-item"><button class="accordion-button">Multilingual Support</button><div class="accordion-content"><div class="accordion-content-inner"><p>Our interface in various languages serves a global user base for seamless transactions, reducing the risk of misunderstandings.</p></div></div></div></div></div></div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">🛒</span>Flow for Buyers</button>
-                  <div class="accordion-content"><div class="accordion-content-inner"><p>A step-by-step guide for you as the buyer.</p><h4>Step 1: Start Escrow</h4><ul><li>Select <strong>"➕ Create Escrow"</strong> > <strong>"👤 Buyer"</strong>.</li><li>Enter details: <div class='highlight'>@opponent_username count name</div></li><li>Enter amount & token: <div class='highlight'>100 TON</div></li></ul><h4>Step 2: Wait for Approval</h4><ul><li>Wait for a notification of the seller's approval.</li></ul><h4>Step 3: Make Payment</h4><ul><li>Transfer the total amount (incl. fees) to the bot's wallet.</li><li>Press <strong>"✅ I've transferred"</strong> & send proof.</li></ul><h4>Step 4: Confirm Item</h4><ul><li>After payment is verified & you receive the item, press <strong>"✅ Confirm Item Received"</strong>.</li></ul><h4>Step 5: Done</h4><ul><li>Transaction is complete!</li></ul></div></div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">📦</span>Flow for Sellers</button>
-                  <div class="accordion-content"><div class="accordion-content-inner"><p>A step-by-step guide for you as the seller.</p><h4>Step 1: Approve Escrow</h4><ul><li>You'll receive a request. Press <strong>"✅ Approve Escrow"</strong>.</li></ul><h4>Step 2: Send the Item</h4><ul><li>After payment is verified, send the goods/service to the buyer.</li></ul><h4>Step 3: Provide Wallet Address</h4><ul><li>The bot will ask for your wallet address to receive the funds.</li></ul><h4>Step 4: Receive Funds</h4><ul><li>After the buyer confirms, funds are released to your wallet.</li></ul></div></div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">❓</span>FAQ (Frequently Asked Questions)</button>
-                  <div class="accordion-content">
-                      <div class="accordion-content-inner">
-                          <p>Find answers to the most common questions.</p>
-                          <div class="faq-category">General</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">What is Coinawe Bot?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Coinawe is an automated escrow service that secures your transactions. We act as a neutral third party, holding funds until both parties are satisfied.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">How long do I have to pay?</button><div class="accordion-content"><div class="accordion-content-inner"><p>You have a limited time (e.g., 6 hours) to make the payment. If you miss the deadline, the transaction is automatically cancelled.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">For Buyers</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">What if the Seller doesn't respond?</button><div class="accordion-content"><div class="accordion-content-inner"><p>If the seller doesn't approve the escrow within the time limit, the transaction will be cancelled automatically. You don't need to do anything.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Can I cancel an escrow?</button><div class="accordion-content"><div class="accordion-content-inner"><p>You can cancel an escrow anytime BEFORE you make the payment. Once the payment is verified, a one-sided cancellation is not possible.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">For Sellers</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">What if the Buyer doesn't pay?</button><div class="accordion-content"><div class="accordion-content-inner"><p>If the buyer fails to pay within the time limit, the transaction is automatically cancelled by the bot. You are free to transact with someone else.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">When do I get my funds?</button><div class="accordion-content"><div class="accordion-content-inner"><p>As soon as the buyer confirms they have received the item, an admin will process the payout. You will be notified with the final TXhash.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">Troubleshooting</div>
-                           <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">What is valid proof for a dispute?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Strong evidence includes: an unedited unboxing video, full conversation screenshots, and a valid shipping tracking number.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">How do I contact support?</button><div class="accordion-content"><div class="accordion-content-inner"><p>For assistance outside the transaction flow, please contact our support team on Telegram: <strong>@CoinaweSupport</strong>.</p></div></div></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-      `,
-      ru: `
-         <div class='section'>
-          <h2>Руководство и FAQ</h2>
-          <p>Добро пожаловать в сервис Escrow Coinawe! Откройте каждый раздел ниже, чтобы найти полное руководство и ответы на часто задаваемые вопросы.</p>
-          
-          <div class="accordion-container">
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">🌟</span>Основные преимущества</button>
-                  <div class="accordion-content"><div class="accordion-content-inner"><p>Coinawe разработан для обеспечения безопасного и эффективного опыта транзакций. Нажмите на каждый пункт ниже для подробностей:</p><div class="accordion-container"><div class="accordion-item"><button class="accordion-button">Максимальная безопасность</button><div class="accordion-content"><div class="accordion-content-inner"><p>Ваши средства защищены ботом как нейтральной третьей стороной. Продавец не получит оплату, пока вы не подтвердите получение, что защищает вас от мошенничества. Покупатель не может отменить платеж после оплаты, что защищает продавца.</p></div></div></div><div class="accordion-item"><button class="accordion-button">Автоматизированный и быстрый процесс</button><div class="accordion-content"><div class="accordion-content-inner"><p>Бот направляет вас на каждом шагу. Больше никаких "что дальше?". Автоматические уведомления обеспечивают быстрый и плавный процесс.</p></div></div></div><div class="accordion-item"><button class="accordion-button">Профессиональная поддержка</button><div class="accordion-content"><div class="accordion-content-inner"><p>В случае спора наша команда администраторов выступит посредником для справедливого решения. Структура Супер-Администратора обеспечивает надлежащую эскалацию.</p></div></div></div><div class="accordion-item"><button class="accordion-button">Прозрачные комиссии</button><div class="accordion-content"><div class="accordion-content-inner"><p>Все комиссии отображаются заранее. Нет скрытых платежей. Вы точно знаете, сколько платите.</p></div></div></div><div class="accordion-item"><button class="accordion-button">Многоязычная поддержка</button><div class="accordion-content"><div class="accordion-content-inner"><p>Наш интерфейс на разных языках обслуживает глобальную базу пользователей для беспрепятственных транзакций, снижая риск недопонимания.</p></div></div></div></div></div></div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">🛒</span>Схема для Покупателя</button>
-                  <div class="accordion-content"><div class="accordion-content-inner"><p>Пошаговое руководство для вас как покупателя.</p><h4>Шаг 1: Начать Escrow</h4><ul><li>Выберите <strong>"➕ Создать Escrow"</strong> > <strong>"👤 Покупатель"</strong>.</li><li>Введите детали: <div class='highlight'>@username_оппонента кол-во название</div></li><li>Введите сумму и токен: <div class='highlight'>100 TON</div></li></ul><h4>Шаг 2: Ожидание подтверждения</h4><ul><li>Ожидайте уведомления о подтверждении от продавца.</li></ul><h4>Шаг 3: Оплата</h4><ul><li>Переведите общую сумму (вкл. комиссию) на кошелек бота.</li><li>Нажмите <strong>"✅ Я оплатил"</strong> и отправьте доказательство.</li></ul><h4>Шаг 4: Подтверждение товара</h4><ul><li>После проверки платежа и получения товара, нажмите <strong>"✅ Товар получен"</strong>.</li></ul><h4>Шаг 5: Готово</h4><ul><li>Сделка завершена!</li></ul></div></div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">📦</span>Схема для Продавца</button>
-                  <div class="accordion-content"><div class="accordion-content-inner"><p>Пошаговое руководство для вас как продавца.</p><h4>Шаг 1: Подтверждение Escrow</h4><ul><li>Вы получите запрос. Нажмите <strong>"✅ Подтвердить Escrow"</strong>.</li></ul><h4>Шаг 2: Отправка товара</h4><ul><li>После проверки платежа, отправьте товар/услугу покупателю.</li></ul><h4>Шаг 3: Указание кошелька</h4><ul><li>Бот запросит ваш адрес кошелька для получения средств.</li></ul><h4>Шаг 4: Получение средств</h4><ul><li>После подтверждения покупателем, средства будут отправлены на ваш кошелек.</li></ul></div></div>
-              </div>
-              <div class="accordion-item">
-                  <button class="accordion-button main-section-button"><span style="color: var(--accent-gold); margin-right: 10px;">❓</span>FAQ (Частые вопросы)</button>
-                  <div class="accordion-content">
-                      <div class="accordion-content-inner">
-                          <p>Найдите ответы на самые распространенные вопросы.</p>
-                          <div class="faq-category">Общие</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Что такое бот Coinawe?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Coinawe — это автоматизированный escrow-сервис, который обеспечивает безопасность ваших сделок. Мы действуем как нейтральная третья сторона, удерживая средства до тех пор, пока обе стороны не будут удовлетворены.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Сколько времени на оплату?</button><div class="accordion-content"><div class="accordion-content-inner"><p>У вас есть ограниченное время (например, 6 часов) на оплату. Если вы пропустите срок, сделка будет автоматически отменена.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">Для Покупателей</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Что, если Продавец не отвечает?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Если продавец не подтвердит escrow в установленный срок, сделка будет автоматически отменена. Вам ничего не нужно делать.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Могу ли я отменить escrow?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Вы можете отменить escrow в любое время ДО совершения платежа. После проверки платежа односторонняя отмена невозможна.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">Для Продавцов</div>
-                          <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Что, если Покупатель не платит?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Если покупатель не оплатит в установленный срок, сделка будет автоматически отменена ботом. Вы можете заключить сделку с кем-то другим.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Когда я получу свои деньги?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Сразу после того, как покупатель подтвердит получение товара, администратор обработает выплату. Вы получите уведомление с TXhash.</p></div></div></div>
-                          </div>
-                          <div class="faq-category">Решение проблем</div>
-                           <div class="accordion-container">
-                              <div class="accordion-item"><button class="accordion-button">Какие доказательства нужны для спора?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Вескими доказательствами являются: видео распаковки без пауз, полные скриншоты переписки и действительный номер отслеживания посылки.</p></div></div></div>
-                              <div class="accordion-item"><button class="accordion-button">Как связаться с поддержкой?</button><div class="accordion-content"><div class="accordion-content-inner"><p>Для помощи вне рамок сделки, пожалуйста, свяжитесь с нашей службой поддержки в Telegram: <strong>@CoinaweSupport</strong>.</p></div></div></div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-          </div>
-        </div>
-      `,
-    };
-    
-    function setupAccordions() {
-        const accordionContainers = document.querySelectorAll('.accordion-container');
-
-        accordionContainers.forEach(container => {
-            // Use :scope to select only direct child buttons for this container
-            const buttons = Array.from(container.querySelectorAll(':scope > .accordion-item > .accordion-button'));
-
-            buttons.forEach(button => {
-                button.addEventListener('click', function() { // Use 'function' to get 'this' context
-                    const wasActive = this.classList.contains('active');
-
-                    // Close all buttons within this specific container group
-                    buttons.forEach(otherButton => {
-                        otherButton.classList.remove('active');
-                        otherButton.nextElementSibling.style.maxHeight = null;
-                    });
-
-                    // If the clicked button was not already active, open it
-                    if (!wasActive) {
-                        this.classList.add('active');
-                        const content = this.nextElementSibling;
-                        content.style.maxHeight = content.scrollHeight + "px";
-                        
-                        // Recalculate parent accordion's height if this is a nested accordion
-                        let parentAccordionContent = this.closest('.accordion-content');
-                        while (parentAccordionContent) {
-                            if (parentAccordionContent.style.maxHeight) {
-                                parentAccordionContent.style.maxHeight = parentAccordionContent.scrollHeight + "px";
-                            }
-                            parentAccordionContent = parentAccordionContent.parentElement.closest('.accordion-content');
-                        }
-                    }
-                });
-            });
-        });
-    }
-    
-    function setLang(lang) {
-      if(lang === 'ru') {
-        let ru_content = content.ru;
-        ru_content = ru_content.replace('<strong>"⚠️ Komplain"</strong>', '<strong>"⚠️ Жалоба"</strong>');
-        content.ru = ru_content;
-      }
-      
-      const langButtons = document.querySelectorAll('.lang-buttons button');
-      langButtons.forEach(button => {
-        button.classList.remove('active');
-        if (button.onclick.toString().includes(`setLang('${lang}')`)) {
-          button.classList.add('active');
-        }
-      });
-      const contentDiv = document.getElementById("content");
-      contentDiv.style.opacity = 0;
-      contentDiv.style.transform = 'translateY(20px)';
-      setTimeout(() => {
-        contentDiv.innerHTML = content[lang];
-        contentDiv.style.opacity = 1;
-        contentDiv.style.transform = 'translateY(0)';
-        // Set up accordions after new content is loaded
-        setupAccordions();
-      }, 300);
-    }
-
-    // Initialize content on page load
-    window.onload = () => {
-      setLang('id');
-    }
-  </script>
 </body>
 </html>
