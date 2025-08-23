@@ -6,7 +6,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <title>Panduan & FAQ – Bot Escrow Coinawe</title>
+  <meta name="description" content="Panduan dan FAQ penggunaan Coinawe Escrow Bot: alur transaksi, perintah, admin, dan fitur otomatis.">
   <style>
     /* Global Styles & Variables */
     :root {
@@ -155,6 +155,11 @@
         font-size: 0.9em;
     }
     
+    .text-gold {
+  color: var(--accent-gold) !important;
+  text-shadow: 0 0 2px rgba(0,0,0,0.5);
+}
+
     .highlight {
       background: var(--highlight-bg);
       padding: 1rem;
@@ -166,11 +171,14 @@
       color: var(--text-color);
       overflow-x: auto;
       white-space: pre-wrap;
-      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
-.text-gold {
-  color: var(--accent-gold) !important;
-}
+
+    /* Nested list for user roles */
+    .section ul ul {
+        margin-top: 0.5rem;
+        font-size: 0.95em;
+    }
 
     /* Media Queries */
     @media (max-width: 600px) {
@@ -181,6 +189,13 @@
       .section h2 { font-size: 1.5rem; }
       .section h3 { font-size: 1.2rem; }
     }
+body {
+  display: flex;
+  flex-direction: column;
+}
+.container {
+  flex: 1;
+}
   </style>
 </head>
 <body>
@@ -191,68 +206,153 @@
 
   <div class="container">
     <div class="section">
-      <h2>🌟 Keunggulan Utama</h2>
+      <h2>🔑 Fitur Utama</h2>
       <ul>
-        <li><strong class="text-gold">Keamanan Maksimal:</strong> Dana Anda diamankan oleh bot sebagai pihak ketiga yang netral. Penjual tidak akan menerima pembayaran 
-
-sebelum Anda mengonfirmasi penerimaan barang/jasa.</li>
-        <li><strong class="text-gold">Proses Otomatis & Cepat:</strong> Bot akan memandu Anda di setiap langkah. Notifikasi otomatis dikirim saat ada tindakan yang 
-
-diperlukan, memastikan proses berjalan lancar.</li>
-        <li><strong class="text-gold">Dukungan Admin Profesional:</strong> Jika terjadi sengketa, tim admin kami yang responsif akan menengahi untuk memastikan 
-
-penyelesaian yang adil.</li>
-        <li><strong class="text-gold">Struktur Biaya Transparan:</strong> Semua biaya layanan ditampilkan di awal. Tidak ada biaya tersembunyi. Anda tahu persis berapa 
-
-yang Anda bayar.</li>
-        <li><strong class="text-gold">Dukungan Multibahasa:</strong> Dengan antarmuka dalam berbagai bahasa, kami melayani pengguna global untuk transaksi tanpa 
-
-batas.</li>
+        <li><b>Layanan Escrow Terstruktur:</b> Proses transaksi jelas, dari inisiasi hingga pelepasan dana.</li>
+        <li><b>Peran Pengguna:</b>
+            <ul>
+                <li><u>Pengguna Biasa:</u> Membuat dan berpartisipasi dalam transaksi escrow.</li>
+                <li><u>Admin:</u> Verifikasi pembayaran, penyelesaian sengketa, pelepasan dana.</li>
+                <li><u>Superadmin:</u> Hak penuh, termasuk manajemen admin dan broadcast.</li>
+            </ul>
+        </li>
+        <li><b>Dukungan Multi-Bahasa:</b> Bahasa Indonesia (id) & Inggris (en).</li>
+        <li><b>Dukungan Aset Kripto:</b> TON & AWEWE.</li>
+        <li><b>Fitur Otomatisasi:</b> Pembatalan otomatis & pengingat pelepasan dana.</li>
       </ul>
     </div>
 
     <div class="section">
-      <h2>🔄 Alur Transaksi</h2>
+      <h2>🔄 Ringkasan Alur Transaksi</h2>
+       <ol>
+        <li><b>Inisiasi & Persetujuan:</b> Pengguna memilih peran, memasukkan detail, lawan transaksi menyetujui atau menolak.</li>
+        <li><b>Pembayaran:</b> Status <code>PENDING_PAYMENT</code>, batas waktu 30 menit.</li>
+        <li><b>Verifikasi Admin:</b> Pembeli kirim TXhash, status <code>WAITING_VERIFICATION</code>.</li>
+        <li><b>Pengiriman Barang/Jasa:</b> Status <code>WAITING_DELIVERY</code> → Penjual kirim & unggah bukti → <code>WAITING_CONFIRMATION</code>.</li>
+        <li><b>Konfirmasi Pembeli:</b> Pembeli menekan tombol Konfirmasi Barang Diterima.</li>
+        <li><b>Pelepasan Dana:</b> Status <code>WAITING_PAYOUT</code>, penjual kirim wallet, admin transfer & unggah TXhash.</li>
+        <li><b>Transaksi Selesai:</b> Status <code>COMPLETED</code>, notifikasi ke kedua pihak.</li>
+        <li><b>Sengketa (Dispute):</b> Status <code>ON_DISPUTE</code>, admin menengahi & memutuskan.</li>
+      </ol>
+    </div>
+    <div class="section">
+      <h2>📜 Detail Alur Transaksi</h2>
+      <p>Berikut adalah rincian setiap langkah dalam proses escrow, dari awal hingga selesai, untuk Pembeli dan Penjual.</p>
+
       <h3>🛒 Alur untuk Pembeli (Buyer)</h3>
       <ol>
-        <li><strong>Memulai Escrow:</strong> Pilih menu "➕ Buat Escrow" > "👤 Pembeli". Masukkan detail: <div class='highlight'>@username_lawan jumlah_item 
+        <li>
+          <b>Memulai Escrow:</b><br>
+          Pilih menu <b>"➕ Buat Escrow"</b> > <b>"👤 Pembeli"</b>. Bot akan meminta Anda memasukkan detail transaksi dalam format: <div 
 
-nama_item</div> dan nominal: <div class='highlight'>100 TON</div></li>
-        <li><strong class="text-gold">Menunggu Persetujuan:</strong> Tunggu notifikasi persetujuan dari penjual.</li>
-        <li><strong class="text-gold">Melakukan Pembayaran:</strong> Transfer dana ke wallet bot, lalu tekan "✅ Saya sudah transfer" & kirim bukti.</li>
-        <li><strong class="text-gold">Mengonfirmasi Barang:</strong> Setelah barang diterima, tekan "✅ Konfirmasi Barang Diterima".</li>
-        <li><strong class="text-gold">Selesai:</strong> Transaksi selesai!</li>
+class="highlight">@username_penjual jumlah nama_barang</div>
+        </li>
+        <li>
+          <b>Masukkan Nominal:</b><br>
+          Setelah itu, masukkan jumlah dan jenis token, contohnya: <div class="highlight">100 TON</div> Bot akan membuat permintaan escrow dan mengirimkannya ke 
+
+penjual.
+        </li>
+        <li>
+          <b>Menunggu Persetujuan Penjual:</b><br>
+          Status escrow saat ini adalah <code>PENDING_USER</code>. Anda tinggal menunggu penjual menekan tombol "✅ Setujui". Jika penjual menolak, escrow akan 
+
+dibatalkan.
+        </li>
+        <li>
+          <b>Melakukan Pembayaran:</b><br>
+          Setelah penjual setuju, status berubah menjadi <code>PENDING_PAYMENT</code>. Anda akan menerima pesan berisi jumlah total yang harus dibayar (termasuk fee) 
+
+dan alamat wallet bot. <b>Batas waktu pembayaran adalah 30 menit.</b>
+        </li>
+        <li>
+          <b>Kirim Bukti Transfer (TXhash):</b><br>
+          Setelah mentransfer dana, balas pesan bot dengan mengirimkan <b>TXhash</b> (Transaction Hash) dari pengiriman Anda.
+        </li>
+        <li>
+          <b>Menunggu Verifikasi Admin:</b><br>
+          Status berubah menjadi <code>WAITING_VERIFICATION</code>. Admin akan memeriksa bukti transfer Anda. Anda akan diberi tahu jika pembayaran sudah dikonfirmasi. 
+        </li>
+        <li>
+          <b>Menunggu Pengiriman Barang:</b><br>
+          Setelah pembayaran terverifikasi, status berubah menjadi <code>WAITING_DELIVERY</code>. Penjual diinstruksikan untuk mengirimkan barang/jasa. 
+        </li>
+         <li>
+          <b>Menerima Bukti & Konfirmasi Barang:</b><br>
+          Saat penjual mengirim barang, Anda akan menerima notifikasi berisi bukti pengiriman dari penjual. Status berubah menjadi <code>WAITING_CONFIRMATION</code>. 
+
+Setelah Anda menerima barang/jasa dengan baik, tekan tombol <b>"✅ Konfirmasi Barang Diterima"</b>.
+        </li>
+        <li>
+          <b>Transaksi Selesai:</b><br>
+          Status berubah menjadi <code>COMPLETED</code>. Dana akan diteruskan ke penjual dan proses escrow Anda selesai.
+        </li>
       </ol>
       
       <h3>📦 Alur untuk Penjual (Seller)</h3>
        <ol>
-        <li><strong>Menyetujui Escrow:</strong> Anda akan menerima notifikasi permintaan. Tekan "✅ Setujui Escrow".</li>
-        <li><strong>Mengirim Barang:</strong> Setelah pembayaran diverifikasi, kirim barang/jasa ke pembeli.</li>
-        <li><strong>Memberikan Alamat Wallet:</strong> Bot akan meminta alamat wallet Anda untuk menerima pembayaran.</li>
-        <li><strong>Menerima Dana:</strong> Setelah pembeli konfirmasi, dana akan dilepaskan ke wallet Anda.</li>
+        <li>
+          <b>Menerima & Menyetujui Permintaan:</b><br>
+          Anda akan menerima notifikasi permintaan escrow dari pembeli. Periksa detailnya, lalu tekan <b>"✅ Setujui"</b> untuk melanjutkan atau "❌ Tolak" untuk 
+
+membatalkan. 
+        </li>
+        <li>
+          <b>Menunggu Pembayaran Pembeli:</b><br>
+          Status berubah menjadi <code>PENDING_PAYMENT</code>. Anda tinggal menunggu pembeli melakukan pembayaran dan admin memverifikasinya. 
+        </li>
+        <li>
+          <b>Mengirim Barang/Jasa:</b><br>
+          Setelah pembayaran terverifikasi oleh admin, Anda akan menerima notifikasi bahwa dana sudah aman. Status menjadi <code>WAITING_DELIVERY</code>. Segera kirim 
+
+barang/jasa kepada pembeli, lalu tekan tombol <b>"📦 Barang Telah Dikirim"</b>. 
+        </li>
+        <li>
+          <b>Kirim Bukti Pengiriman:</b><br>
+          Status berubah menjadi <code>WAITING_SHIPMENT_PROOF</code>. Bot akan meminta Anda untuk mengirimkan bukti pengiriman (contoh: resi, screenshot, foto). 
+
+Kirimkan bukti tersebut sebagai balasan. 
+        </li>
+        <li>
+          <b>Menunggu Konfirmasi Pembeli:</b><br>
+          Bukti Anda akan diteruskan ke pembeli dan status berubah menjadi <code>WAITING_CONFIRMATION</code>. Anda tinggal menunggu pembeli menekan tombol konfirmasi 
+
+setelah mereka menerima barang.
+        </li>
+        <li>
+          <b>Memberikan Alamat Wallet:</b><br>
+          Setelah pembeli konfirmasi, status berubah menjadi <code>WAITING_PAYOUT</code>. Bot akan meminta Anda mengirimkan alamat wallet (TON atau AWEWE) untuk 
+
+menerima dana. 
+        </li>
+        <li>
+          <b>Menerima Dana:</b><br>
+          Setelah Anda memberikan wallet, admin akan mentransfer dana dan mengirimkan TXhash sebagai bukti. Status berubah menjadi <code>COMPLETED</code> dan transaksi 
+
+selesai. 
+        </li>
       </ol>
     </div>
-    
     <div class="section">
-      <h2>🧑‍💻 Perintah Bot</h2>
+      <h2>🧑‍💻 Peran & Perintah</h2>
       <h3>Pengguna Umum</h3>
       <ul>
         <li><code>/start</code> – Memulai atau reset interaksi.</li>
-        <li><code>/history</code> – Melihat riwayat transaksi.</li>
-        <li><code>/myid</code> – Menampilkan profil pengguna Anda.</li>
-        <li><code>/admin_list</code> – Melihat daftar admin & superadmin yang bertugas.</li>
-        <li><code>/cancel</code> – Membatalkan proses escrow yang sedang berjalan.</li>
+        <li><code>/history</code> – Menampilkan riwayat transaksi terakhir.</li>
+        <li><code>/myid</code> – Informasi profil pengguna.</li>
+        <li><code>/admin_list</code> – Menampilkan daftar admin & superadmin.</li>
+        <li><code>/cancel</code> – Membatalkan proses escrow berjalan.</li>
       </ul>
       <h3>Admin</h3>
       <ul>
-        <li><code>/admin</code> – Mengakses menu khusus admin.</li>
-        <li><code>/release [ID Escrow] [TXhash]</code> – Merilis dana secara manual jika diperlukan.</li>
+        <li><code>/admin</code> – Menu admin.</li>
+        <li><code>/release [ID Escrow] [TXhash]</code> – Rilis dana manual untuk transaksi <code>WAITING_PAYOUT</code>.</li>
       </ul>
       <h3>Superadmin</h3>
       <ul>
-        <li><code>/broadcast [pesan]</code> – Mengirim pesan ke semua pengguna bot.</li>
-        <li><code>/addadmin [USER_ID]</code> – Menambahkan admin baru.</li>
-        <li><code>/removeadmin [USER_ID]</code> – Menghapus admin.</li>
+        <li><code>/broadcast [pesan]</code> – Broadcast ke semua pengguna.</li>
+        <li><code>/addadmin [USER_ID]</code> – Tambah admin baru.</li>
+        <li><code>/removeadmin [USER_ID]</code> – Hapus admin.</li>
       </ul>
     </div>
 
@@ -260,42 +360,42 @@ nama_item</div> dan nominal: <div class='highlight'>100 TON</div></li>
       <h2>❓ FAQ (Pertanyaan Umum)</h2>
       
       <h4>Umum</h4>
-      <p><strong class="text-gold">Apa itu Coinawe Bot?</strong><br>
+      <p><strong>Apa itu Coinawe Bot?</strong><br>
       Coinawe adalah layanan penengah (escrow) otomatis yang mengamankan transaksi Anda. Kami bertindak sebagai pihak ketiga netral yang menahan dana hingga kedua 
 
 belah pihak puas.</p>
-      <p><strong class="text-gold">Berapa lama batas waktu pembayaran?</strong><br>
+      <p><strong>Berapa lama batas waktu pembayaran?</strong><br>
       Anda memiliki batas waktu tertentu (misalnya, 6 jam) untuk membayar. Jika terlewat, transaksi otomatis batal.</p>
-      <p><strong class="text-gold">Bagaimana jika saya sudah mengirim dana ke bot tapi lawan transaksi menghilang?</strong><br>
+      <p class="text-gold"><strong>Bagaimana jika saya sudah mengirim dana ke bot tapi lawan transaksi menghilang?</strong><br>
       Tenang, dana Anda aman. Tujuan utama escrow adalah melindungi dana jika salah satu pihak menghilang. Jika lawan transaksi tidak melanjutkan escrow, bot akan 
 
 membatalkannya secara otomatis setelah batas waktu tercapai dan admin akan memproses pengembalian dana Anda.</p>
       
       <h4>Untuk Pembeli</h4>
-      <p><strong class="text-gold">Bagaimana jika Penjual tidak merespons permintaan escrow?</strong><br>
+      <p><strong>Bagaimana jika Penjual tidak merespons permintaan escrow?</strong><br>
       Jika penjual tidak menyetujui escrow dalam batas waktu, transaksi akan dibatalkan secara otomatis. Anda tidak perlu melakukan apa-apa.</p>
-      <p><strong class="text-gold">Bisakah saya membatalkan escrow?</strong><br>
+      <p><strong>Bisakah saya membatalkan escrow?</strong><br>
       Anda bisa membatalkan escrow kapan saja SEBELUM melakukan pembayaran. Setelah pembayaran diverifikasi, pembatalan sepihak tidak bisa dilakukan.</p>
 
       <h4>Untuk Penjual</h4>
-      <p><strong class="text-gold">Bagaimana jika Pembeli tidak membayar?</strong><br>
+      <p><strong>Bagaimana jika Pembeli tidak membayar?</strong><br>
       Jika pembeli tidak membayar dalam batas waktu, transaksi otomatis dibatalkan oleh bot. Anda bisa bertransaksi dengan orang lain.</p>
-      <p><strong class="text-gold">Kapan saya menerima dana?</strong><br>
+      <p><strong>Kapan saya menerima dana?</strong><br>
       Segera setelah pembeli mengonfirmasi penerimaan barang, admin akan memproses pencairan dana (payout). Anda akan diberi notifikasi beserta TXhash.</p>
     </div>
     
     <div class="section">
       <h2>⚙️ Aspek Teknis & Otomatisasi</h2>
       <ul>
-        <li><b>Platform</b>: Telegram.</li>
-        <li><b>Database</b>: Google Sheets.</li>
+        <li><b>Platform:</b> Google Apps Script (GAS).</li>
+        <li><b>Database:</b> Google Sheets (Users, Escrow, Logs).</li>
       </ul>
       <h3>Fungsi Otomatis</h3>
       <ul>
         <li><code>checkPaymentTimeouts</code> – Membatalkan escrow yang belum dibayar (15 menit sekali).</li>
-        <li><code>checkStuckPayouts</code> – Ingatkan admin jika payout tertunda (5 menit sekali).</li>
-        <li><code>clearInactiveStates</code> – Bersihkan state user tidak aktif (1 jam sekali).</li>
-        <li><code>processBroadcastQueue</code> – Atur antrian broadcast agar tidak melebihi batas API.</li>
+        <li><code>checkStuckPayouts</code> – Mengingatkan admin jika pelepasan dana tertunda (5 menit sekali).</li>
+        <li><code>clearInactiveStates</code> – Membersihkan state pengguna yang tidak aktif (1 jam sekali).</li>
+        <li><code>processBroadcastQueue</code> – Mengatur antrian broadcast agar tidak melebihi batas API Telegram.</li>
       </ul>
     </div>
   </div>
